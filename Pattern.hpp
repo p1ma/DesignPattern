@@ -5,10 +5,10 @@
 #include <iostream>
 #include <sstream>
 
-#define PATTERN_NAME "@NAME"
-#define PATTERN_UML "@UML"
-#define PATTERN_RESUME "@RESUME_FROM"
-#define PATTERN_DESCRIPTION "@DESCRIPTION"
+#define PATTERN_NAME "@NAME = "
+#define PATTERN_UML "@UML = "
+#define PATTERN_RESUME "@RESUME_FROM = "
+#define PATTERN_DESCRIPTION "@DESCRIPTION = "
 
 class Pattern{
 

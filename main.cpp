@@ -11,10 +11,11 @@ int main(int argc, char* argv[]){
   pFileReader = new FileReader();
 
   // TEST READFILE()
-  std::string pattern = "";
+  cout << "TEST READFILE" << endl;
+  string pattern = "";
   cout << pFileReader->readFile(pattern) << endl; // INVALID NAME
-  pattern += "RANDOM";
-  cout << pFileReader->readFile(pattern) << endl; // .PATTERN ONLY OK
+  pattern = "RANDOMFILE";
+  cout << pFileReader->readFile(pattern) << endl; // FILE .PATTERN ONLY
   pattern += ".pattern";
   cout << pFileReader->readFile(pattern) << endl; // FILE DOES NOT EXIST
   pattern = "factory.pattern";
@@ -22,8 +23,10 @@ int main(int argc, char* argv[]){
   // END TEST READFILE()
 
   // TEST CONSTRUCTOR PATTERN
-  std::string param =  pFileReader->readFile(pattern);
+  cout << "TEST CONSTRUCTOR PATTERN" << endl;
+  string param =  pFileReader->readFile(pattern);
   pPattern = new Pattern(param);
+  cout << pPattern->getInformations() << endl;
   // delete FileReader ptr
   delete pFileReader;
   delete pPattern;

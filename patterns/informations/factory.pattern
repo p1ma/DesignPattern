@@ -1,6 +1,6 @@
-@NAME = "FACTORY"
-@UML = "factory.png"
-@RESUME_FROM = "https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)"
+@NAME = FACTORY
+@UML = factory.png
+@RESUME_FROM = https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)
 @DESCRIPTION = qwerty
 
 
