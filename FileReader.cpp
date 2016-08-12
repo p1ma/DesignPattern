@@ -3,7 +3,9 @@
 // constructor
 FileReader::FileReader(){
   this->pFile = new std::ifstream();
-  this->directory = "/patterns/images/";
+  this->directory = new char[256];
+  getcwd(directory, (size_t)255);
+  strcat(directory, "/patterns/images/");
 }
 
 // destructor
@@ -19,7 +21,7 @@ std::string FileReader::readFile(const std::string& name){
   if(size != 0){
     if(name.compare((size - 3), 3,png) == 0){
       std::string file = directory;
-      file += name.c_str();
+      file += name;
       if(exist(file)){
 	return FileReader::read(file);
       }else{
@@ -38,7 +40,6 @@ inline bool FileReader::exist(const std::string& name){
   FILE *exist;
   if((exist = fopen(name.c_str(), "r"))){
     fclose(exist);
-    delete exist;
     return true;
   }
   return false;

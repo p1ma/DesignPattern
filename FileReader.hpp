@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include <fstream>
+#include <unistd.h>
+#include <cstring>
 
 class FileReader {
 
 private :
   std::ifstream *pFile;
-  std::string directory;
+  char *directory;
   inline bool exist(const std::string& name);
   std::string read(const std::string& name);
 public :
