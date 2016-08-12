@@ -3,23 +3,24 @@
 // constructor
 FileReader::FileReader(){
   this->pFile = new std::ifstream();
-  this->directory = new char[256];
-  getcwd(directory, (size_t)255);
-  strcat(directory, "/patterns/images/");
+  this->directory = new char[LENGTH];
+  getcwd(directory, (size_t)(LENGTH - 1));
+  strcat(directory, "/patterns/informations/");
 }
 
 // destructor
 FileReader::~FileReader(){
   delete this->pFile; // delete file pointer
+  delete this->directory;
 }
 
 // check name's properties
 std::string FileReader::readFile(const std::string& name){
   std::string suffix;
-  std::string png = "png";
-  int size = name.size();
-  if(size != 0){
-    if(name.compare((size - 3), 3,png) == 0){
+  std::string pattern = ".pattern";
+  unsigned int size = name.size();
+  if(size > pattern.size()){
+    if(name.compare((size - 8), 8,pattern) == 0){
       std::string file = directory;
       file += name;
       if(exist(file)){
@@ -28,7 +29,7 @@ std::string FileReader::readFile(const std::string& name){
 	return "(readFile) FILE DOES NOT EXIST";
       }
     }else{
-      return "(readFile) FILE .PNG ONLY";
+      return "(readFile) FILE .PATTERN ONLY";
     }
   }else{
     return "(readFile) INVALID NAME";
@@ -47,7 +48,21 @@ inline bool FileReader::exist(const std::string& name){
 
 // read
 std::string FileReader::read(const std::string& name){
-  return "OK";
+  std::string res = "";
+  const char *file = name.c_str();
+  this->pFile->open(file, std::ifstream::in);
+
+  //length of file
+  pFile->seekg(0,pFile->end);
+  int length = pFile->tellg();
+  pFile->seekg(0,pFile->beg);
+  std::cout << "length : " << length << std::endl;
+  // reading...
+  char *buffer = new char[length];
+  pFile->read(buffer,length);
+  this->pFile->close();
+  res = buffer;
+  return res;
 }
 
 

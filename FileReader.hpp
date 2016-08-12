@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <cstring>
 
+#define LENGTH 512
 class FileReader {
 
 private :
