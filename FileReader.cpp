@@ -56,7 +56,6 @@ std::string FileReader::read(const std::string& name){
   pFile->seekg(0,pFile->end);
   int length = pFile->tellg();
   pFile->seekg(0,pFile->beg);
-  std::cout << "length : " << length << std::endl;
   // reading...
   char *buffer = new char[length];
   pFile->read(buffer,length);

@@ -1,9 +1,11 @@
 #include <iostream>
 #include "FileReader.hpp"
+#include "Pattern.hpp"
 
 using namespace std;
 
 FileReader *pFileReader;
+Pattern *pPattern;
 
 int main(int argc, char* argv[]){
   pFileReader = new FileReader();
@@ -19,7 +21,11 @@ int main(int argc, char* argv[]){
   cout << pFileReader->readFile(pattern) << endl; // OK, FILE CORRECT
   // END TEST READFILE()
 
+  // TEST CONSTRUCTOR PATTERN
+  std::string param =  pFileReader->readFile(pattern);
+  pPattern = new Pattern(param);
   // delete FileReader ptr
   delete pFileReader;
+  delete pPattern;
   return 1;
 }
