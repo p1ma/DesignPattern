@@ -34,3 +34,23 @@ std::string const Pattern::getInformations(){
      << "Description : " << this->description << std::endl;
  return res.str();
 }
+
+// return pattern's name
+std::string const Pattern::getName(){
+    return (this->name.substr(PATTERN_NAME_LENGTH));
+}
+
+// return image's name
+std::string const Pattern::getImageName(){
+    return (this->image_name.substr(PATTERN_UML_LENGTH));
+}
+
+
+std::string const Pattern::getURL(){
+    return (this->url_informations.substr(PATTERN_RESUME_LENGTH));
+}
+
+// return Pattern's description
+std::string const Pattern::getDescription(){
+    return (this->description.substr(PATTERN_DESCRIPTION_LENGTH));
+}

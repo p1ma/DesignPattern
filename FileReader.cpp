@@ -19,7 +19,7 @@ std::string FileReader::readFile(const std::string& name){
   std::string suffix;
   std::string pattern = ".pattern";
   unsigned int size = name.size();
-  if(size > pattern.size()){
+  if(size > (pattern.size() + 1)){
     if(name.compare((size - 8), 8,pattern) == 0){
       std::string file = directory;
       file += name;
@@ -64,4 +64,30 @@ std::string FileReader::read(const std::string& name){
   return res;
 }
 
-
+// returns files names find in 'directory'
+std::vector<std::string> const FileReader::getFiles(){
+    std::vector<std::string> vector;
+    std::string pattern = ".pattern";
+    unsigned int length = pattern.size();
+    std::string file = "";
+    DIR *dir;
+    // open the directory
+    dir = opendir(this->directory);
+    if(dir != NULL){
+        struct dirent *direct = NULL;
+        // parse the files in it
+        while((direct = readdir(dir)) != NULL){
+            file = direct->d_name;
+            if(file.size() > (length + 1)){
+                // file ends with '.pattern'
+                if(file.compare((file.size() - length), length, pattern) == 0){
+                    vector.push_back(file);
+                }
+            }
+        }
+        closedir(dir);
+        return vector;
+    }else{
+        return vector; // empty vector
+    }
+}
