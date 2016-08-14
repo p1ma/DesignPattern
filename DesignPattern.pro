@@ -15,9 +15,11 @@ TEMPLATE = app
 SOURCES += main.cpp\
         FileReader.cpp\
         Pattern.cpp \
-        GraphicModel.cpp
+        GraphicModel.cpp \
+    View.cpp
 
 HEADERS  +=\
             FileReader.hpp\
             Pattern.hpp \
-            GraphicModel.hpp
+            GraphicModel.hpp \
+    View.hpp

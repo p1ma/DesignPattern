@@ -62,6 +62,5 @@ int main(int argc, char* argv[]){
   // delete ptr
   delete pFileReader;
   delete pPattern;
-  delete pGraphicModel;
   return a.exec();
 }

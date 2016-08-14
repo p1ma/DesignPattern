@@ -3,6 +3,7 @@
 
 #include <QKeyEvent>
 #include <QMainWindow>
+#include "View.hpp"
 
 class GraphicModel : QObject
 {
@@ -19,6 +20,7 @@ class GraphicModel : QObject
         };
 private :
     MyWindow *window;
+    void setView(View *v);
 public:
     GraphicModel();
     ~GraphicModel();
