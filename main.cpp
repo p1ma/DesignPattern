@@ -2,6 +2,8 @@
 #include "FileReader.hpp"
 #include "Pattern.hpp"
 #include "GraphicModel.hpp"
+#include "ViewPattern.hpp"
+#include "ViewAnswers.hpp"
 #include <QApplication>
 #include <QLabel>
 
@@ -10,6 +12,8 @@ using namespace std;
 FileReader *pFileReader;
 Pattern *pPattern;
 GraphicModel *pGraphicModel;
+ViewPattern *pViewPattern;
+ViewAnswers *pViewAnswers;
 
 int main(int argc, char* argv[]){
   QApplication a(argc,argv);
@@ -59,6 +63,13 @@ int main(int argc, char* argv[]){
   img.show();
   cout << pixmap.depth() << "," << pixmap.height() << endl;*/
 
+  // TEST VIEWPATTERN
+  pViewPattern = new ViewPattern();
+  //pGraphicModel->setView(pViewPattern);
+
+  // TEST VIEWANSWERS
+  pViewAnswers = new ViewAnswers();
+  pGraphicModel->setView(pViewAnswers);
   // delete ptr
   delete pFileReader;
   delete pPattern;

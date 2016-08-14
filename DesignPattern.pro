@@ -16,10 +16,14 @@ SOURCES += main.cpp\
         FileReader.cpp\
         Pattern.cpp \
         GraphicModel.cpp \
-    View.cpp
+    View.cpp \
+    ViewPattern.cpp \
+    ViewAnswers.cpp
 
 HEADERS  +=\
             FileReader.hpp\
             Pattern.hpp \
             GraphicModel.hpp \
-    View.hpp
+    View.hpp \
+    ViewPattern.hpp \
+    ViewAnswers.hpp

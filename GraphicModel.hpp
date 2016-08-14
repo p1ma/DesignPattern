@@ -20,10 +20,10 @@ class GraphicModel : QObject
         };
 private :
     MyWindow *window;
-    void setView(View *v);
 public:
     GraphicModel();
     ~GraphicModel();
+    void setView(View *v);
 };
 
 #endif // GRAPHICMODEL_HPP
