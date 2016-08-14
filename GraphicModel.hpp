@@ -3,8 +3,12 @@
 
 #include <QKeyEvent>
 #include <QMainWindow>
+#include <vector>
 #include "View.hpp"
+#include "ViewAnswers.hpp"
+#include "ViewPattern.hpp"
 
+class Model;
 class GraphicModel : QObject
 {
     Q_OBJECT
@@ -20,10 +24,13 @@ class GraphicModel : QObject
         };
 private :
     MyWindow *window;
+    std::vector<View*> views;
+    Model *pModel;
 public:
-    GraphicModel();
+    GraphicModel(Model *model);
     ~GraphicModel();
     void setView(View *v);
+    void refreshViews();
 };
 
 #endif // GRAPHICMODEL_HPP

@@ -1,9 +1,13 @@
 #include "View.hpp"
 
-View::View() : QWidget()
+View::View(GraphicModel *pModel) : QWidget(), pGraphicModel(pModel)
 {
 }
 
 View::~View(){
+}
 
+// return graphicModel
+GraphicModel *View::getModel(){
+    return this->pGraphicModel;
 }

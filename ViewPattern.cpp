@@ -1,6 +1,6 @@
 #include "ViewPattern.hpp"
 
-ViewPattern::ViewPattern() : View()
+ViewPattern::ViewPattern(GraphicModel *pModel) : View(pModel)
 {
     // vertical layout
     this->verticalLayout = new QVBoxLayout();

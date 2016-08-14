@@ -3,12 +3,17 @@
 
 #include "QWidget"
 
+class GraphicModel;
+
 class View : public QWidget
 {
+protected :
+    GraphicModel *pGraphicModel;
 public:
-    View();
+    View(GraphicModel *pModel);
     ~View();
     virtual void refresh() const=0;
+    GraphicModel *getModel();
 };
 
 #endif // VIEW_HPP

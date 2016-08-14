@@ -5,11 +5,13 @@
 #include <QLabel>
 #include <QVBoxLayout>
 
+class GraphicModel;
+
 class ViewPattern : public View
 {
     Q_OBJECT
 public:
-    ViewPattern();
+    ViewPattern(GraphicModel *pModel);
     ~ViewPattern();
     virtual void refresh() const;
 private :

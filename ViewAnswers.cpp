@@ -1,6 +1,6 @@
 #include "ViewAnswers.hpp"
 
-ViewAnswers::ViewAnswers() : View()
+ViewAnswers::ViewAnswers(GraphicModel *pModel) : View(pModel)
 {
     this->setFixedSize(500,250);
 

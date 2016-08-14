@@ -18,7 +18,6 @@ ViewAnswers *pViewAnswers;
 int main(int argc, char* argv[]){
   QApplication a(argc,argv);
   pFileReader = new FileReader();
-  pGraphicModel = new GraphicModel();
 
   // TEST READFILE()
   cout << "TEST READFILE" << endl;
@@ -63,13 +62,7 @@ int main(int argc, char* argv[]){
   img.show();
   cout << pixmap.depth() << "," << pixmap.height() << endl;*/
 
-  // TEST VIEWPATTERN
-  pViewPattern = new ViewPattern();
-  //pGraphicModel->setView(pViewPattern);
 
-  // TEST VIEWANSWERS
-  pViewAnswers = new ViewAnswers();
-  pGraphicModel->setView(pViewAnswers);
   // delete ptr
   delete pFileReader;
   delete pPattern;

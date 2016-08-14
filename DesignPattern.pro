@@ -18,7 +18,8 @@ SOURCES += main.cpp\
         GraphicModel.cpp \
     View.cpp \
     ViewPattern.cpp \
-    ViewAnswers.cpp
+    ViewAnswers.cpp \
+    Model.cpp
 
 HEADERS  +=\
             FileReader.hpp\
@@ -26,4 +27,5 @@ HEADERS  +=\
             GraphicModel.hpp \
     View.hpp \
     ViewPattern.hpp \
-    ViewAnswers.hpp
+    ViewAnswers.hpp \
+    Model.hpp

@@ -51,7 +51,8 @@ SOURCES       = main.cpp \
 		GraphicModel.cpp \
 		View.cpp \
 		ViewPattern.cpp \
-		ViewAnswers.cpp moc_GraphicModel.cpp \
+		ViewAnswers.cpp \
+		Model.cpp moc_GraphicModel.cpp \
 		moc_ViewPattern.cpp
 OBJECTS       = main.o \
 		FileReader.o \
@@ -60,6 +61,7 @@ OBJECTS       = main.o \
 		View.o \
 		ViewPattern.o \
 		ViewAnswers.o \
+		Model.o \
 		moc_GraphicModel.o \
 		moc_ViewPattern.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -296,7 +298,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/DesignPattern1.0.0 || mkdir -p .tmp/DesignPattern1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/DesignPattern1.0.0/ && $(COPY_FILE) --parents FileReader.hpp Pattern.hpp GraphicModel.hpp View.hpp ViewPattern.hpp ViewAnswers.hpp .tmp/DesignPattern1.0.0/ && $(COPY_FILE) --parents main.cpp FileReader.cpp Pattern.cpp GraphicModel.cpp View.cpp ViewPattern.cpp ViewAnswers.cpp .tmp/DesignPattern1.0.0/ && (cd `dirname .tmp/DesignPattern1.0.0` && $(TAR) DesignPattern1.0.0.tar DesignPattern1.0.0 && $(COMPRESS) DesignPattern1.0.0.tar) && $(MOVE) `dirname .tmp/DesignPattern1.0.0`/DesignPattern1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/DesignPattern1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/DesignPattern1.0.0/ && $(COPY_FILE) --parents FileReader.hpp Pattern.hpp GraphicModel.hpp View.hpp ViewPattern.hpp ViewAnswers.hpp Model.hpp .tmp/DesignPattern1.0.0/ && $(COPY_FILE) --parents main.cpp FileReader.cpp Pattern.cpp GraphicModel.cpp View.cpp ViewPattern.cpp ViewAnswers.cpp Model.cpp .tmp/DesignPattern1.0.0/ && (cd `dirname .tmp/DesignPattern1.0.0` && $(TAR) DesignPattern1.0.0.tar DesignPattern1.0.0 && $(COMPRESS) DesignPattern1.0.0.tar) && $(MOVE) `dirname .tmp/DesignPattern1.0.0`/DesignPattern1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/DesignPattern1.0.0
 
 
 clean:compiler_clean 
@@ -436,6 +438,22 @@ moc_GraphicModel.cpp: /usr/include/qt5/QtGui/QKeyEvent \
 		/usr/include/qt5/QtGui/qicon.h \
 		View.hpp \
 		/usr/include/qt5/QtWidgets/QWidget \
+		ViewAnswers.hpp \
+		/usr/include/qt5/QtWidgets/QRadioButton \
+		/usr/include/qt5/QtWidgets/qradiobutton.h \
+		/usr/include/qt5/QtWidgets/qabstractbutton.h \
+		/usr/include/qt5/QtWidgets/QVBoxLayout \
+		/usr/include/qt5/QtWidgets/qboxlayout.h \
+		/usr/include/qt5/QtWidgets/qlayout.h \
+		/usr/include/qt5/QtWidgets/qlayoutitem.h \
+		/usr/include/qt5/QtWidgets/qgridlayout.h \
+		/usr/include/qt5/QtWidgets/QHBoxLayout \
+		/usr/include/qt5/QtWidgets/QPushButton \
+		/usr/include/qt5/QtWidgets/qpushbutton.h \
+		ViewPattern.hpp \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
+		/usr/include/qt5/QtWidgets/qframe.h \
 		GraphicModel.hpp
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include GraphicModel.hpp -o moc_GraphicModel.cpp
 
@@ -695,15 +713,22 @@ main.o: main.cpp FileReader.hpp \
 		/usr/include/qt5/QtGui/qicon.h \
 		View.hpp \
 		/usr/include/qt5/QtWidgets/QWidget \
-		ViewPattern.hpp \
-		/usr/include/qt5/QtWidgets/QLabel \
-		/usr/include/qt5/QtWidgets/qlabel.h \
-		/usr/include/qt5/QtWidgets/qframe.h \
+		ViewAnswers.hpp \
+		/usr/include/qt5/QtWidgets/QRadioButton \
+		/usr/include/qt5/QtWidgets/qradiobutton.h \
+		/usr/include/qt5/QtWidgets/qabstractbutton.h \
 		/usr/include/qt5/QtWidgets/QVBoxLayout \
 		/usr/include/qt5/QtWidgets/qboxlayout.h \
 		/usr/include/qt5/QtWidgets/qlayout.h \
 		/usr/include/qt5/QtWidgets/qlayoutitem.h \
 		/usr/include/qt5/QtWidgets/qgridlayout.h \
+		/usr/include/qt5/QtWidgets/QHBoxLayout \
+		/usr/include/qt5/QtWidgets/QPushButton \
+		/usr/include/qt5/QtWidgets/qpushbutton.h \
+		ViewPattern.hpp \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
+		/usr/include/qt5/QtWidgets/qframe.h \
 		/usr/include/qt5/QtWidgets/QApplication \
 		/usr/include/qt5/QtWidgets/qapplication.h \
 		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
@@ -921,7 +946,23 @@ GraphicModel.o: GraphicModel.cpp GraphicModel.hpp \
 		/usr/include/qt5/QtWidgets/qtabwidget.h \
 		/usr/include/qt5/QtGui/qicon.h \
 		View.hpp \
-		/usr/include/qt5/QtWidgets/QWidget
+		/usr/include/qt5/QtWidgets/QWidget \
+		ViewAnswers.hpp \
+		/usr/include/qt5/QtWidgets/QRadioButton \
+		/usr/include/qt5/QtWidgets/qradiobutton.h \
+		/usr/include/qt5/QtWidgets/qabstractbutton.h \
+		/usr/include/qt5/QtWidgets/QVBoxLayout \
+		/usr/include/qt5/QtWidgets/qboxlayout.h \
+		/usr/include/qt5/QtWidgets/qlayout.h \
+		/usr/include/qt5/QtWidgets/qlayoutitem.h \
+		/usr/include/qt5/QtWidgets/qgridlayout.h \
+		/usr/include/qt5/QtWidgets/QHBoxLayout \
+		/usr/include/qt5/QtWidgets/QPushButton \
+		/usr/include/qt5/QtWidgets/qpushbutton.h \
+		ViewPattern.hpp \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
+		/usr/include/qt5/QtWidgets/qframe.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GraphicModel.o GraphicModel.cpp
 
 View.o: View.cpp View.hpp \
@@ -1274,8 +1315,13 @@ ViewAnswers.o: ViewAnswers.cpp ViewAnswers.hpp \
 		/usr/include/qt5/QtWidgets/qlayout.h \
 		/usr/include/qt5/QtWidgets/qlayoutitem.h \
 		/usr/include/qt5/QtWidgets/qgridlayout.h \
-		/usr/include/qt5/QtWidgets/QHBoxLayout
+		/usr/include/qt5/QtWidgets/QHBoxLayout \
+		/usr/include/qt5/QtWidgets/QPushButton \
+		/usr/include/qt5/QtWidgets/qpushbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ViewAnswers.o ViewAnswers.cpp
+
+Model.o: Model.cpp Model.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Model.o Model.cpp
 
 moc_GraphicModel.o: moc_GraphicModel.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_GraphicModel.o moc_GraphicModel.cpp

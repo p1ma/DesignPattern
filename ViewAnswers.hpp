@@ -7,6 +7,8 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 
+class GraphicModel;
+
 class ViewAnswers : public View
 {
 private :
@@ -16,7 +18,7 @@ private :
     QRadioButton *answer1, *answer2, *answer3, *answer4;
     QPushButton *confirm;
 public:
-    ViewAnswers();
+    ViewAnswers(GraphicModel *pModel);
     ~ViewAnswers();
     virtual void refresh() const;
 };
