@@ -1,26 +1,22 @@
 #include <iostream>
-#include "FileReader.hpp"
-#include "Pattern.hpp"
-#include "GraphicModel.hpp"
-#include "ViewPattern.hpp"
-#include "ViewAnswers.hpp"
+#include "Model.hpp"
 #include <QApplication>
 #include <QLabel>
 
 using namespace std;
 
-FileReader *pFileReader;
-Pattern *pPattern;
-GraphicModel *pGraphicModel;
-ViewPattern *pViewPattern;
-ViewAnswers *pViewAnswers;
+Model *pModel;
 
 int main(int argc, char* argv[]){
   QApplication a(argc,argv);
-  pFileReader = new FileReader();
+  pModel = new Model(); // Model instanciation
+  cout << "TEST GET PATTERNS VIA MODEL CLASS" << endl;
+  cout << pModel->getPatterns() << endl;
+  cout << "END TEST GET PATTERNS VIA MODEL CLASS" << endl;
 
   // TEST READFILE()
-  cout << "TEST READFILE" << endl;
+  /*
+   * cout << "TEST READFILE" << endl;
   string pattern = "";
   cout << pFileReader->readFile(pattern) << endl; // INVALID NAME
   pattern = "RANDOMFILE";
@@ -29,10 +25,11 @@ int main(int argc, char* argv[]){
   cout << pFileReader->readFile(pattern) << endl; // FILE DOES NOT EXIST
   pattern = "factory.pattern";
   cout << pFileReader->readFile(pattern) << endl; // OK, FILE CORRECT
+  */
   // END TEST READFILE()
 
   // TEST GETFILES()
-  std::vector<std::string> files;
+ /* std::vector<std::string> files;
   files = pFileReader->getFiles();
   if(files.size() > 0){
       cout << "Size greater than 0 : OK" << endl;
@@ -40,17 +37,17 @@ int main(int argc, char* argv[]){
           cout << "File num ." << i << endl;
           cout << files[i] << endl << "----" << endl;
       }
-  }
+  }*/
 
   // TEST CONSTRUCTOR PATTERN
-  cout << "TEST CONSTRUCTOR PATTERN" << endl;
+  /*cout << "TEST CONSTRUCTOR PATTERN" << endl;
   string param =  pFileReader->readFile(pattern);
   pPattern = new Pattern(param);
   cout << pPattern->getInformations() << endl;
   cout << pPattern->getName() << endl;
   cout << pPattern->getImageName() << endl;
   cout << pPattern->getURL() << endl;
-  cout << pPattern->getDescription() << endl;
+  cout << pPattern->getDescription() << endl;*/
   //END TEST PATTERN
 
   // TEST PRINT IMAGE AND INFOS
@@ -64,7 +61,6 @@ int main(int argc, char* argv[]){
 
 
   // delete ptr
-  delete pFileReader;
-  delete pPattern;
+  delete pModel;
   return a.exec();
 }

@@ -71,6 +71,7 @@ std::string FileReader::read(const std::string& name){
 std::vector<std::string> const FileReader::getFiles(){
     std::vector<std::string> vector;
     std::string pattern = ".pattern";
+    std::string example = "example.pattern" ; // to include this file
     unsigned int length = pattern.size();
     std::string file = "";
     DIR *dir;
@@ -83,7 +84,8 @@ std::vector<std::string> const FileReader::getFiles(){
             file = direct->d_name;
             if(file.size() > (length + 1)){
                 // file ends with '.pattern'
-                if(file.compare((file.size() - length), length, pattern) == 0){
+                if((file.compare((file.size() - length), length, pattern) == 0)
+                        && (file.compare(example) != 0)){
                     vector.push_back(file);
                 }
             }
