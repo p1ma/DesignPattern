@@ -3,6 +3,7 @@
 #include "Pattern.hpp"
 #include "MainWindow.hpp"
 #include <QApplication>
+#include <QLabel>
 
 using namespace std;
 
@@ -47,6 +48,14 @@ int main(int argc, char* argv[]){
   cout << pPattern->getDescription() << endl;
   //END TEST PATTERN
 
+  // TEST PRINT IMAGE AND INFOS
+  string image = pPattern->getImageName();
+  cout << "image load : " << image << endl;
+  QPixmap pixmap= pFileReader->getImage(image) ;
+  QLabel img;
+  img.setPixmap(pixmap);
+  img.show();
+  cout << pixmap.depth() << "," << pixmap.height() << endl;
 
   // delete FileReader ptr
   delete pFileReader;

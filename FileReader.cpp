@@ -96,10 +96,13 @@ std::vector<std::string> const FileReader::getFiles(){
 }
 
 // return QPixmap containing the pattern's image
-QPixmap *FileReader::getImage(std::string const link){
-    std::string absolute = "";
-    absolute.append(this->imageDirectory);
-    absolute += link;
-    QPixmap *pImage = new QPixmap(absolute.c_str());
+QPixmap FileReader::getImage(std::string const link){
+    QString path = QCoreApplication::applicationDirPath();
+    path.append("/patterns/images/");
+    path.append(QString::fromStdString(link));
+    QPixmap pImage(500,500);
+    std::cout << path.toStdString() << std::endl;
+    //path = "/home/pima/Documents/Training/CPP/DesignPattern/patterns/images/factory.png"; // OK directly
+    pImage.load(path);
     return pImage;
 }
