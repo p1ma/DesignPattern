@@ -1,6 +1,8 @@
 #include <iostream>
 #include "FileReader.hpp"
 #include "Pattern.hpp"
+#include "MainWindow.hpp"
+#include <QApplication>
 
 using namespace std;
 
@@ -8,6 +10,7 @@ FileReader *pFileReader;
 Pattern *pPattern;
 
 int main(int argc, char* argv[]){
+  QApplication a(argc,argv);
   pFileReader = new FileReader();
 
   // TEST READFILE()
@@ -30,5 +33,5 @@ int main(int argc, char* argv[]){
   // delete FileReader ptr
   delete pFileReader;
   delete pPattern;
-  return 1;
+  return a.exec();
 }
