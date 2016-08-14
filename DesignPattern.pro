@@ -13,10 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        MainWindow.cpp\
         FileReader.cpp\
-        Pattern.cpp
+        Pattern.cpp \
+        GraphicModel.cpp
 
-HEADERS  += MainWindow.hpp\
+HEADERS  +=\
             FileReader.hpp\
-            Pattern.hpp
+            Pattern.hpp \
+            GraphicModel.hpp

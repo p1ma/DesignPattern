@@ -9,6 +9,7 @@
 #include <dirent.h>
 #include <QPixmap>
 #include <QCoreApplication>
+#include <QFile>
 
 #define LENGTH 512
 
@@ -25,7 +26,7 @@ public :
   ~FileReader(); // destructor
   std::string readFile(const std::string& name); // check existence / pName's size before calling method read()
   std::vector<std::string> const getFiles(); // returns files names find in 'directory'
-  QPixmap getImage(std::string const link); // return QPixmap containing the pattern's image
+  QPixmap getImage(const char *link); // return QPixmap containing the pattern's image
 };
 
 #endif // FILE_READER

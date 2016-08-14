@@ -1,7 +1,7 @@
 #include <iostream>
 #include "FileReader.hpp"
 #include "Pattern.hpp"
-#include "MainWindow.hpp"
+#include "GraphicModel.hpp"
 #include <QApplication>
 #include <QLabel>
 
@@ -9,10 +9,12 @@ using namespace std;
 
 FileReader *pFileReader;
 Pattern *pPattern;
+GraphicModel *pGraphicModel;
 
 int main(int argc, char* argv[]){
   QApplication a(argc,argv);
   pFileReader = new FileReader();
+  pGraphicModel = new GraphicModel();
 
   // TEST READFILE()
   cout << "TEST READFILE" << endl;
@@ -49,16 +51,17 @@ int main(int argc, char* argv[]){
   //END TEST PATTERN
 
   // TEST PRINT IMAGE AND INFOS
-  string image = pPattern->getImageName();
+  /*string image = pPattern->getImageName();
   cout << "image load : " << image << endl;
-  QPixmap pixmap= pFileReader->getImage(image) ;
+  QPixmap pixmap= pFileReader->getImage(image.c_str()) ;
   QLabel img;
   img.setPixmap(pixmap);
   img.show();
-  cout << pixmap.depth() << "," << pixmap.height() << endl;
+  cout << pixmap.depth() << "," << pixmap.height() << endl;*/
 
-  // delete FileReader ptr
+  // delete ptr
   delete pFileReader;
   delete pPattern;
+  delete pGraphicModel;
   return a.exec();
 }
