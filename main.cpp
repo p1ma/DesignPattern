@@ -14,6 +14,9 @@ int main(int argc, char* argv[]){
   cout << pModel->getPatterns() << endl;
   cout << "END TEST GET PATTERNS VIA MODEL CLASS" << endl;
 
+  // PLAY
+  pModel->play();
+
   // TEST READFILE()
   /*
    * cout << "TEST READFILE" << endl;
@@ -59,8 +62,6 @@ int main(int argc, char* argv[]){
   img.show();
   cout << pixmap.depth() << "," << pixmap.height() << endl;*/
 
-
-  // delete ptr
-  delete pModel;
+  // exec
   return a.exec();
 }

@@ -18,6 +18,7 @@ public:
     Model();
     ~Model();
     std::string const getPatterns();
+    void play(); // launch quiz
 };
 
 #endif // MODEL_HPP

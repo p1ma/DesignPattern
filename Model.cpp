@@ -6,6 +6,7 @@ Model::Model()
     this->pGraphicModel = new GraphicModel(this);
     this->pFileReader = new FileReader();
     fillVector();
+    this->pGraphicModel->show();
 }
 
 // destructor
@@ -31,6 +32,7 @@ void Model::fillVector(){
     }
 }
 
+// returns all patterns' informations in 'patterns'
 std::string const Model::getPatterns()
 {
     std::string res;
@@ -38,4 +40,10 @@ std::string const Model::getPatterns()
         res.append(this->patterns[ind]->getInformations());
     }
     return res;
+}
+
+//launch quiz
+void Model::play(){
+    //ask GraphicModel to play using all Model's informations
+    this->pGraphicModel->play(this->patterns);
 }

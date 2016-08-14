@@ -4,11 +4,14 @@
 #include <QKeyEvent>
 #include <QMainWindow>
 #include <vector>
+#include <iostream>
+#include <ctime>
 #include "View.hpp"
 #include "ViewAnswers.hpp"
 #include "ViewPattern.hpp"
 
 class Model;
+class Pattern;
 class GraphicModel : QObject
 {
     Q_OBJECT
@@ -26,11 +29,15 @@ private :
     MyWindow *window;
     std::vector<View*> views;
     Model *pModel;
+    void close();
 public:
-    GraphicModel(Model *model);
-    ~GraphicModel();
-    void setView(View *v);
-    void refreshViews();
+    GraphicModel(Model *model); // constructor
+    ~GraphicModel(); // destructor
+    void setView(View *v); // set current view 'v'
+    void refreshViews(); // refresh all views
+    void show(); // show MyWindow
+    void play(std::vector<Pattern *> const pPatterns); // start graphic quiz
+
 };
 
 #endif // GRAPHICMODEL_HPP
