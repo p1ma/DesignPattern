@@ -4,8 +4,11 @@
 FileReader::FileReader(){
   this->pFile = new std::ifstream();
   this->directory = new char[LENGTH];
+  this->imageDirectory = new char[LENGTH];
   getcwd(directory, (size_t)(LENGTH - 1));
+  getcwd(imageDirectory, (size_t)(LENGTH - 1));
   strcat(directory, "/patterns/informations/");
+  strcat(imageDirectory, "/patterns/images/");
 }
 
 // destructor
@@ -90,4 +93,13 @@ std::vector<std::string> const FileReader::getFiles(){
     }else{
         return vector; // empty vector
     }
+}
+
+// return QPixmap containing the pattern's image
+QPixmap *FileReader::getImage(std::string const link){
+    std::string absolute = "";
+    absolute.append(this->imageDirectory);
+    absolute += link;
+    QPixmap *pImage = new QPixmap(absolute.c_str());
+    return pImage;
 }
