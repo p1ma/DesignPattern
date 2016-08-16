@@ -39,10 +39,10 @@ void GraphicModel::show(){
 }
 
 // play graphic quiz
-void GraphicModel::play(std::vector<Pattern *> const pPatterns){
+void GraphicModel::play(std::vector<Pattern *> patterns){
     // if there is at least 1 pattern in the directory /patterns/informations/
-    if(pPatterns.size() > 0){
-
+    if(pPatterns.size() > 4){
+        copyToVector(patterns); // copy patterns vector to pPatterns
     }else{
         std::cout << "Quiz not available." << std::endl
                      << "Please add patterns informations in /patterns/informations/" << std::endl
@@ -53,15 +53,19 @@ void GraphicModel::play(std::vector<Pattern *> const pPatterns){
 
 // close all
 void GraphicModel::close(){
-    time_t begin,end;
-    time(&begin);
-    time(&end);
-    end += 3;
-    // wait 3s
-    while(begin < end){
-        time(&begin);
-    }
+    // need timer or smth
     this->window->close();
-    delete this->pModel;
+    //delete this->pModel;
     return;
+}
+
+ // 4 answers, 1 correct ,3 incorrects, return the 3 incorrects
+std::vector<std::string> GraphicModel::getOthersAnswers(std::string const goodOne){
+    std::vector<std::string> answers;
+
+    return answers;
+}
+
+void GraphicModel::copyToVector(std::vector<Pattern *> patterns){
+    this->pPatterns.swap(patterns); // error 14/08/2016 22h41
 }

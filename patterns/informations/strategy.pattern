@@ -1,0 +1,4 @@
+@NAME = Strategy
+@UML = strategy.png
+@RESUME_FROM = https://en.wikipedia.org/wiki/Strategy_pattern
+@DESCRIPTION = Define a family of algorithms,encapsulate each one, and make them interchangeable. Lets the algorithm vary independently from clients that use it.

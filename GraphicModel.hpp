@@ -29,14 +29,17 @@ private :
     MyWindow *window;
     std::vector<View*> views;
     Model *pModel;
+    std::vector<Pattern *> pPatterns;
     void close();
+    std::vector<std::string> getOthersAnswers(std::string const goodOne); // 4 answers, 1 correct ,3 incorrects, return the 3 incorrects
 public:
     GraphicModel(Model *model); // constructor
     ~GraphicModel(); // destructor
     void setView(View *v); // set current view 'v'
     void refreshViews(); // refresh all views
     void show(); // show MyWindow
-    void play(std::vector<Pattern *> const pPatterns); // start graphic quiz
+    void play(std::vector<Pattern *> patterns); // start graphic quiz
+    void copyToVector(std::vector<Pattern *> patterns); // copy patterns to pPatterns
 
 };
 
