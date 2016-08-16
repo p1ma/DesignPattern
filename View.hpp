@@ -11,7 +11,6 @@ protected :
     GraphicModel *pGraphicModel;
 public:
     View(GraphicModel *pModel);
-    ~View();
     virtual void refresh() const=0;
     GraphicModel *getModel();
 };

@@ -28,7 +28,10 @@ ViewAnswers::ViewAnswers(GraphicModel *pModel) : View(pModel)
     this->horizontalLayout_2->addWidget(this->answer4);
 
     // CONFIRM BUTTON
-    this->confirm = new QPushButton("Confirm");
+    this->confirm = new QPushButton("Confirm", this);
+
+    // Connect button signal to appropriate slot
+    connect(this->confirm, SIGNAL (clicked()), this, SLOT (confirmClick()));
 
     // ADD ELEMENTS
     this->verticalLayout->addLayout(this->horizontalLayout_1);
@@ -45,4 +48,30 @@ ViewAnswers::~ViewAnswers(){
 
 void ViewAnswers::refresh() const{
 
+}
+
+// set RadioButton's content
+void ViewAnswers::setAnswers(std::vector<std::string> answers){
+    if(answers.size() == 4){
+        this->answer1->setText(QString::fromStdString(answers[0]));
+        this->answer2->setText(QString::fromStdString(answers[1]));
+        this->answer3->setText(QString::fromStdString(answers[2]));
+        this->answer4->setText(QString::fromStdString(answers[3]));
+    }
+}
+
+void ViewAnswers::confirmClick(){
+    // radioButton group would be easier
+    if(this->answer1->isChecked()){
+        pGraphicModel->handle(this->answer1->text().toStdString());
+    }
+    if(this->answer2->isChecked()){
+        pGraphicModel->handle(this->answer2->text().toStdString());
+    }
+    if(this->answer3->isChecked()){
+        pGraphicModel->handle(this->answer3->text().toStdString());
+    }
+    if(this->answer4->isChecked()){
+        pGraphicModel->handle(this->answer4->text().toStdString());
+    }
 }

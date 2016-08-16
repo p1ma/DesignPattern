@@ -117,3 +117,8 @@ void GraphicModel::erase(unsigned int index, std::vector<int> &list){
         }
     }
 }
+
+void GraphicModel::handle(std::string answer){
+    std::cout << "CLICKED ON " << answer << std::endl;
+}
+

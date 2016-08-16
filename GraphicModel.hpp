@@ -43,6 +43,7 @@ public:
     void show(); // show MyWindow
     void play(std::vector<Pattern *> patterns); // start graphic quiz
     void copyToVector(std::vector<Pattern *> patterns); // copy patterns to pPatterns
+    void handle(std::string answer);
     static const int WIDTH = 1024;
     static const int HEIGHT = 768;
 };

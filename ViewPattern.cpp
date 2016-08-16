@@ -22,3 +22,7 @@ ViewPattern::~ViewPattern(){
 void ViewPattern::refresh() const{
 
 }
+
+void ViewPattern::setImage(QPixmap &image){
+    this->image->setPixmap(image);
+}

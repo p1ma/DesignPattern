@@ -5,6 +5,7 @@
 #include "GraphicModel.hpp"
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QPixmap>
 
 class GraphicModel;
 
@@ -15,6 +16,7 @@ public:
     ViewPattern(GraphicModel *pModel);
     ~ViewPattern();
     virtual void refresh() const;
+    void setImage(QPixmap &image);
 private :
     QVBoxLayout *verticalLayout;
     QLabel *image;
