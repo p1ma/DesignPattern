@@ -1,5 +1,7 @@
 #include "GraphicModel.hpp"
 
+#include "Model.hpp"
+
 // constructor
 GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
 {
@@ -11,12 +13,12 @@ GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
     // instanciate views
     //ViewAnswers *answers = new ViewAnswers(this);
     //ViewPattern *pattern = new ViewPattern(this);
-    ViewQuiz *quiz = new ViewQuiz(this);
+    this->pViewQuiz = new ViewQuiz(this);
     //views.push_back(answers);
     //views.push_back(pattern);
-    views.push_back(quiz);
+    views.push_back(this->pViewQuiz);
     srand(std::time(0)); // for random function
-    setView(quiz);
+    setView(pViewQuiz);
 }
 
 // destructor
@@ -70,9 +72,19 @@ void GraphicModel::close(){
 }
 
  // 4 answers, 1 correct ,3 incorrects, return the 3 incorrects
-std::vector<std::string> GraphicModel::getOthersAnswers(std::string const goodOne){
+std::vector<std::string> GraphicModel::getOthersAnswers(int const index){
     std::vector<std::string> answers;
-
+    std::vector<int> list;
+    list.push_back(index);
+    answers.push_back(this->pPatterns[index]->getName());
+    unsigned int pick;
+    while(answers.size() < 4){
+        while(contains(pick,list)){
+        pick = (rand() % (this->pPatterns.size())); // pick a random number € [0, nbPattern-1]
+        }
+        list.push_back(pick);
+        answers.push_back(this->pPatterns[pick]->getName());
+    }
     return answers;
 }
 
@@ -89,6 +101,7 @@ void GraphicModel::synchronize(std::vector<int> &list){
 
 void GraphicModel::start(std::vector<int> playlist, std::vector<int> endlist){
     unsigned int index = (rand() % this->pPatterns.size()); // pick a random number € [0, nbPattern-1];
+    std::vector<std::string> answers;
     while(playlist.size() > 0){
         while(contains(index,endlist)){
             index = (rand() % (this->pPatterns.size())); // pick a random number € [0, nbPattern-1]
@@ -96,7 +109,13 @@ void GraphicModel::start(std::vector<int> playlist, std::vector<int> endlist){
         std::cout << "index picked " << index << std::endl;
         endlist.push_back(index); // add element
         erase(index, playlist) ; // remove element
+        answers = getOthersAnswers(index);
+        //fillView(this->pPatterns[index], answers); // fill the ViewQuiz
     }
+    for(unsigned int i = 0 ; i < answers.size() ; i++){
+        std::cout << "answer " << i << answers[i] << std::endl;
+    }
+    fillView(this->pPatterns[index], answers); // just 1 time
 }
 
 // check if 'index' is present in the vector 'list'
@@ -120,5 +139,13 @@ void GraphicModel::erase(unsigned int index, std::vector<int> &list){
 
 void GraphicModel::handle(std::string answer){
     std::cout << "CLICKED ON " << answer << std::endl;
+}
+
+void GraphicModel::fillView(Pattern *pattern, std::vector<std::string> answers){
+        std::cout << "gonna load " << pattern->getImageName() << std::endl;
+        QPixmap *pImage = this->pModel->getImage(pattern->getImageName());
+        std::cout << "here" << std::endl;
+        this->pViewQuiz->setQuestion(pImage,answers);
+        this->show();
 }
 

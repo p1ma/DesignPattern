@@ -2,11 +2,13 @@
 #define VIEWQUIZ_HPP
 
 #include "View.hpp"
-class ViewAnswers;
-class ViewPattern;
-#include "GraphicModel.hpp"
+#include "Pattern.hpp"
 #include <QPixmap>
 #include <QVBoxLayout>
+
+class ViewAnswers;
+class ViewPattern;
+class GraphicModel;
 
 class ViewQuiz : public View
 {
@@ -19,7 +21,7 @@ public:
     ViewQuiz(GraphicModel *pModel);
     ~ViewQuiz();
     virtual void refresh() const;
-    void setQuestion(QPixmap &image, std::vector<std::string> answers);
+    void setQuestion(QPixmap *image, std::vector<std::string> answers);
 };
 
 #endif // VIEWQUIZ_HPP

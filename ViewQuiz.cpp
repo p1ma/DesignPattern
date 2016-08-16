@@ -28,7 +28,7 @@ void ViewQuiz::refresh() const{
 }
 
 
-void ViewQuiz::setQuestion(QPixmap &image, std::vector<std::string> answers){
+void ViewQuiz::setQuestion(QPixmap *image, std::vector<std::string> answers){
     this->pAnswer->setAnswers(answers);
     this->pPattern->setImage(image);
 }

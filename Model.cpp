@@ -47,3 +47,7 @@ void Model::play(){
     //ask GraphicModel to play using all Model's informations
     this->pGraphicModel->play(this->patterns);
 }
+
+QPixmap *Model::getImage(std::string const name){
+    return this->pFileReader->getImage(name.c_str());
+}

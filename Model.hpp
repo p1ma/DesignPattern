@@ -4,7 +4,7 @@
 #include "GraphicModel.hpp"
 #include "Pattern.hpp"
 #include "FileReader.hpp"
-
+#include <QPixmap>
 #include <vector>
 
 class Model
@@ -19,6 +19,7 @@ public:
     ~Model();
     std::string const getPatterns();
     void play(); // launch quiz
+    QPixmap *getImage(std::string const name);
 };
 
 #endif // MODEL_HPP

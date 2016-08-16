@@ -8,9 +8,10 @@
 #include <ctime>
 #include "View.hpp"
 #include "ViewQuiz.hpp"
+#include "Pattern.hpp"
 
 class Model;
-class Pattern;
+
 class GraphicModel : QObject
 {
     Q_OBJECT
@@ -27,14 +28,16 @@ class GraphicModel : QObject
 private :
     MyWindow *window;
     std::vector<View*> views;
+    ViewQuiz *pViewQuiz;
     Model *pModel;
     std::vector<Pattern *> pPatterns;
     void close();
-    std::vector<std::string> getOthersAnswers(std::string const goodOne); // 4 answers, 1 correct ,3 incorrects, return the 3 incorrects
+    std::vector<std::string> getOthersAnswers(int const index); // 4 answers, 1 correct ,3 incorrects, return the 3 incorrects
     void synchronize(std::vector<int> &list);
     void start(std::vector<int> playlist, std::vector<int> endlist);
     bool contains(unsigned int index, std::vector<int> &list);
     void erase(unsigned int index, std::vector<int> &list);
+    void fillView(Pattern *pattern, std::vector<std::string> answers);
 public:
     GraphicModel(Model *model); // constructor
     ~GraphicModel(); // destructor
@@ -44,8 +47,8 @@ public:
     void play(std::vector<Pattern *> patterns); // start graphic quiz
     void copyToVector(std::vector<Pattern *> patterns); // copy patterns to pPatterns
     void handle(std::string answer);
-    static const int WIDTH = 1024;
-    static const int HEIGHT = 768;
+    static const int WIDTH = 600;
+    static const int HEIGHT = 800;
 };
 
 #endif // GRAPHICMODEL_HPP

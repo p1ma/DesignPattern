@@ -16,7 +16,7 @@ public:
     ViewPattern(GraphicModel *pModel);
     ~ViewPattern();
     virtual void refresh() const;
-    void setImage(QPixmap &image);
+    void setImage(QPixmap *image);
 private :
     QVBoxLayout *verticalLayout;
     QLabel *image;
