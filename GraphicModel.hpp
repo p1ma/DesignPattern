@@ -32,6 +32,10 @@ private :
     std::vector<Pattern *> pPatterns;
     void close();
     std::vector<std::string> getOthersAnswers(std::string const goodOne); // 4 answers, 1 correct ,3 incorrects, return the 3 incorrects
+    void synchronize(std::vector<int> &list);
+    void start(std::vector<int> playlist, std::vector<int> endlist);
+    bool contains(unsigned int index, std::vector<int> &list);
+    void erase(unsigned int index, std::vector<int> &list);
 public:
     GraphicModel(Model *model); // constructor
     ~GraphicModel(); // destructor
