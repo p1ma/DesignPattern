@@ -106,7 +106,6 @@ void GraphicModel::start(std::vector<int> playlist, std::vector<int> endlist){
         while(contains(index,endlist)){
             index = (rand() % (this->pPatterns.size())); // pick a random number € [0, nbPattern-1]
         }
-        std::cout << "index picked " << index << std::endl;
         this->rightAnswer = this->pPatterns[index]; // obv
         endlist.push_back(index); // add element
         erase(index, playlist) ; // remove element
@@ -143,7 +142,9 @@ void GraphicModel::handle(std::string answer){
         QString msg = QString::fromStdString(rightAnswer->getDescription());
         msg.append("\nMore infos ");
         msg.append("<a href=\"");
-        msg.append(QString::fromStdString(rightAnswer->getURL()));
+        std::string href = rightAnswer->getURL();
+        href.append("\0");
+        msg.append(QString::fromStdString(href));
         msg.append("\">here</a>");
         // URL problem with factory
         QMessageBox msgBox(pViewQuiz);

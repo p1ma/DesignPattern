@@ -26,7 +26,7 @@ public :
   ~FileReader(); // destructor
   std::string readFile(const std::string& name); // check existence and name's size before calling method read()
   std::vector<std::string> const getFiles(); // returns files names find in 'directory'
-  QPixmap *getImage(const char *link); // return QPixmap containing the pattern's image
+  QPixmap *getImage(std::string link); // return QPixmap containing the pattern's image
 };
 
 #endif // FILE_READER

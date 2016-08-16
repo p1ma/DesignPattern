@@ -98,16 +98,13 @@ std::vector<std::string> const FileReader::getFiles(){
 }
 
 // return QPixmap containing the pattern's image
-QPixmap *FileReader::getImage(const char *link){
-    QString path = "patterns/images/";
-    path.append(link);
-    QFile file(path);
-    if(file.exists()){
-        std::cout << "FILE OK" << std::endl;
-    }
+QPixmap *FileReader::getImage(std::string link){
+    std::string path = ":/patterns/images/" + link;
     QPixmap *pImage = new QPixmap();
-    std::cout << path.toStdString() << std::endl;
-    path = "/home/pima/Documents/Training/CPP/DesignPattern/patterns/images/factory.png"; // OK directly
-    pImage->load(path);
+    pImage->load(":/patterns/images/singleton.png");
+    std::cout << "PATH " << path << std::endl;
+    if(pImage->isNull()){
+        std::cout << "image null" << std::endl;
+    }
     return pImage;
 }

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/patterns/images">
+        <file alias="factory.png">patterns/images/factory.png</file>
+        <file alias="mvc.png">patterns/images/mvc.png</file>
+        <file alias="singleton.png">patterns/images/singleton.png</file>
+        <file alias="state.png">patterns/images/state.png</file>
+        <file alias="strategy.png">patterns/images/strategy.png</file>
+    </qresource>
+</RCC>

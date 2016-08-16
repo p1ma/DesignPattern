@@ -29,3 +29,6 @@ HEADERS  +=\
     ViewAnswers.hpp \
     Model.hpp \
     ViewQuiz.hpp
+
+RESOURCES += \
+    DesignPattern.qrc

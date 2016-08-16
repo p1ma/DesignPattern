@@ -9,6 +9,7 @@ Model *pModel;
 
 int main(int argc, char* argv[]){
   QApplication a(argc,argv);
+  Q_INIT_RESOURCE(DesignPattern);
   pModel = new Model(); // Model instanciation
   cout << "TEST GET PATTERNS VIA MODEL CLASS" << endl;
   cout << pModel->getPatterns() << endl;
