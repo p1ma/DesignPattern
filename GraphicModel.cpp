@@ -100,13 +100,14 @@ void GraphicModel::synchronize(std::vector<int> &list){
 }
 
 void GraphicModel::start(std::vector<int> playlist, std::vector<int> endlist){
-    unsigned int index = (rand() % this->pPatterns.size()); // pick a random number € [0, nbPattern-1];
+    int index = (rand() % this->pPatterns.size()); // pick a random number € [0, nbPattern-1];
     std::vector<std::string> answers;
     while(playlist.size() > 0){
         while(contains(index,endlist)){
             index = (rand() % (this->pPatterns.size())); // pick a random number € [0, nbPattern-1]
         }
         std::cout << "index picked " << index << std::endl;
+        this->rightAnswer = this->pPatterns[index]; // obv
         endlist.push_back(index); // add element
         erase(index, playlist) ; // remove element
         answers = getOthersAnswers(index);
@@ -119,7 +120,7 @@ void GraphicModel::start(std::vector<int> playlist, std::vector<int> endlist){
 }
 
 // check if 'index' is present in the vector 'list'
-bool GraphicModel::contains(unsigned int index, std::vector<int> &list){
+bool GraphicModel::contains(int index, std::vector<int> &list){
     if (std::find(list.begin(), list.end(), index) != list.end())
     {
         return true;
@@ -128,7 +129,7 @@ bool GraphicModel::contains(unsigned int index, std::vector<int> &list){
 }
 
 // erase element 'index' in the vector 'list'
-void GraphicModel::erase(unsigned int index, std::vector<int> &list){
+void GraphicModel::erase(int index, std::vector<int> &list){
     for(unsigned int i = 0 ; i < list.size() ; i++){
         if(list[i] == index){
             list.erase(list.begin() + i);
@@ -138,7 +139,20 @@ void GraphicModel::erase(unsigned int index, std::vector<int> &list){
 }
 
 void GraphicModel::handle(std::string answer){
-    std::cout << "CLICKED ON " << answer << std::endl;
+    if((rightAnswer->getName()).compare(answer) == 0){
+        QString msg = QString::fromStdString(rightAnswer->getDescription());
+        msg.append("\nMore infos ");
+        msg.append("<a href=\"");
+        msg.append(QString::fromStdString(rightAnswer->getURL()));
+        msg.append("\">here</a>");
+        // URL problem with factory
+        QMessageBox msgBox(pViewQuiz);
+        msgBox.setWindowTitle("Congratulation");
+        msgBox.setTextFormat(Qt::RichText);
+        msgBox.setText(msg);
+        msgBox.exec();
+        // need to change the question now...
+    }
 }
 
 void GraphicModel::fillView(Pattern *pattern, std::vector<std::string> answers){

@@ -40,6 +40,8 @@ ViewAnswers::ViewAnswers(GraphicModel *pModel) : View(pModel)
 
     // SET LAYOUT
     this->setLayout(this->verticalLayout);
+
+    srand(std::time(0));
 }
 
 ViewAnswers::~ViewAnswers(){
@@ -52,11 +54,13 @@ void ViewAnswers::refresh() const{
 
 // set RadioButton's content
 void ViewAnswers::setAnswers(std::vector<std::string> answers){
+    // need to ramdom using built-in random generator:
+    std::random_shuffle (answers.begin(), answers.end());
     if(answers.size() == 4){
-        this->answer1->setText(QString::fromStdString(answers[0]));
-        this->answer2->setText(QString::fromStdString(answers[1]));
-        this->answer3->setText(QString::fromStdString(answers[2]));
-        this->answer4->setText(QString::fromStdString(answers[3]));
+            this->answer1->setText(QString::fromStdString(answers[0]));
+            this->answer2->setText(QString::fromStdString(answers[1]));
+            this->answer3->setText(QString::fromStdString(answers[2]));
+            this->answer4->setText(QString::fromStdString(answers[3]));
     }
 }
 

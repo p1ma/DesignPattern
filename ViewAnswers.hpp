@@ -7,6 +7,8 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
+#include <ctime>
+#include <vector>
 
 class GraphicModel;
 

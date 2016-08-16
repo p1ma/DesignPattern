@@ -6,6 +6,7 @@
 #include <vector>
 #include <iostream>
 #include <ctime>
+#include <QMessageBox>
 #include "View.hpp"
 #include "ViewQuiz.hpp"
 #include "Pattern.hpp"
@@ -31,12 +32,13 @@ private :
     ViewQuiz *pViewQuiz;
     Model *pModel;
     std::vector<Pattern *> pPatterns;
+    Pattern *rightAnswer;
     void close();
     std::vector<std::string> getOthersAnswers(int const index); // 4 answers, 1 correct ,3 incorrects, return the 3 incorrects
     void synchronize(std::vector<int> &list);
     void start(std::vector<int> playlist, std::vector<int> endlist);
-    bool contains(unsigned int index, std::vector<int> &list);
-    void erase(unsigned int index, std::vector<int> &list);
+    bool contains (int index, std::vector<int> &list);
+    void erase(int index, std::vector<int> &list);
     void fillView(Pattern *pattern, std::vector<std::string> answers);
 public:
     GraphicModel(Model *model); // constructor
