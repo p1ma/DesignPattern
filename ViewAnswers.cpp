@@ -2,7 +2,7 @@
 
 ViewAnswers::ViewAnswers(GraphicModel *pModel) : View(pModel)
 {
-    this->setFixedSize(500,250);
+    this->setFixedSize((int)(GraphicModel::WIDTH),(int)(GraphicModel::HEIGHT / 2));
 
     // VERTICAL LAYOUT
     this->verticalLayout = new QVBoxLayout();

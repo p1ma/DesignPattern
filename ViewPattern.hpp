@@ -2,6 +2,7 @@
 #define VIEWPATTERN_HPP
 
 #include "View.hpp"
+#include "GraphicModel.hpp"
 #include <QLabel>
 #include <QVBoxLayout>
 

@@ -7,8 +7,7 @@
 #include <iostream>
 #include <ctime>
 #include "View.hpp"
-#include "ViewAnswers.hpp"
-#include "ViewPattern.hpp"
+#include "ViewQuiz.hpp"
 
 class Model;
 class Pattern;
@@ -44,7 +43,8 @@ public:
     void show(); // show MyWindow
     void play(std::vector<Pattern *> patterns); // start graphic quiz
     void copyToVector(std::vector<Pattern *> patterns); // copy patterns to pPatterns
-
+    static const int WIDTH = 1024;
+    static const int HEIGHT = 768;
 };
 
 #endif // GRAPHICMODEL_HPP

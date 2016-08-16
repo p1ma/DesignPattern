@@ -2,6 +2,8 @@
 
 ViewPattern::ViewPattern(GraphicModel *pModel) : View(pModel)
 {
+    this->setFixedSize((int)(GraphicModel::WIDTH),(int)(GraphicModel::HEIGHT / 2));
+
     // vertical layout
     this->verticalLayout = new QVBoxLayout();
     this->verticalLayout->setContentsMargins(10, 10, 10, 10);

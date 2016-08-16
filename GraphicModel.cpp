@@ -4,16 +4,19 @@
 GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
 {
     this->window = new MyWindow();
-    this->window->setFixedSize(1024,768);
+    this->window->setFixedSize(WIDTH,HEIGHT);
     this->window->setWindowTitle(QString::fromUtf8("Pattern Quiz") );
     //this->window->show();
 
     // instanciate views
-    ViewAnswers *answers = new ViewAnswers(this);
-    ViewPattern *pattern = new ViewPattern(this);
-    views.push_back(answers);
-    views.push_back(pattern);
+    //ViewAnswers *answers = new ViewAnswers(this);
+    //ViewPattern *pattern = new ViewPattern(this);
+    ViewQuiz *quiz = new ViewQuiz(this);
+    //views.push_back(answers);
+    //views.push_back(pattern);
+    views.push_back(quiz);
     srand(std::time(0)); // for random function
+    setView(quiz);
 }
 
 // destructor

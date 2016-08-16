@@ -2,6 +2,7 @@
 #define VIEWANSWERS_HPP
 
 #include "View.hpp"
+#include "GraphicModel.hpp"
 #include <QRadioButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>

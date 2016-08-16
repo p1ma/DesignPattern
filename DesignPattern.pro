@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     View.cpp \
     ViewPattern.cpp \
     ViewAnswers.cpp \
-    Model.cpp
+    Model.cpp \
+    ViewQuiz.cpp
 
 HEADERS  +=\
             FileReader.hpp\
@@ -28,4 +29,5 @@ HEADERS  +=\
     View.hpp \
     ViewPattern.hpp \
     ViewAnswers.hpp \
-    Model.hpp
+    Model.hpp \
+    ViewQuiz.hpp
