@@ -124,5 +124,8 @@ QPixmap *FileReader::getImage(std::string link){
     }
     QPixmap *pImage = new QPixmap();
     pImage->load(toLoad);
+    if(pImage->isNull()){
+        pImage = new QPixmap(500,500); // blank image
+    }
     return pImage;
 }

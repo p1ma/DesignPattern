@@ -47,6 +47,8 @@ void GraphicModel::show(){
 // play graphic quiz
 void GraphicModel::play(std::vector<Pattern *> patterns){
     // if there is at least 1 pattern in the directory /patterns/informations/
+    this->playlist.clear();
+    this->endlist.clear();
     if(patterns.size() > 4){
         copyToVector(patterns); // copy patterns vector to pPatterns
         std::cout << "synchronize " << std::endl;
@@ -100,6 +102,7 @@ void GraphicModel::synchronize(std::vector<int> &list){
 void GraphicModel::start(){
     int index = (rand() % this->pPatterns.size()); // pick a random number € [0, nbPattern-1];
     std::vector<std::string> answers;
+    // there is at least 1 DP in the list
     if(this->playlist.size() > 0){
         while(contains(index,this->endlist)){
             index = (rand() % (this->pPatterns.size())); // pick a random number € [0, nbPattern-1]
@@ -109,11 +112,22 @@ void GraphicModel::start(){
         erase(index, this->playlist) ; // remove element
         answers = getOthersAnswers(index);
         fillView(this->pPatterns[index], answers); // fill the ViewQuiz
+    }else{
+     // No more DP , the quiz is finished
+        QMessageBox::StandardButtons msgBox; // YES / NO Button
+        std::ostringstream nb;
+        nb << this->pPatterns.size();
+        QString msg = "You achieved the " + QString::fromStdString(nb.str()) + " questions with success." +
+                "\nDo you want to play again ?";
+        msgBox = QMessageBox::question(pViewQuiz,"Congratulation", msg, QMessageBox::Yes | QMessageBox::No);
+        if(msgBox == QMessageBox::Yes){
+                // reload the quiz
+            play(this->pPatterns);
+        }else{
+            // quit
+            close();
+        }
     }
-    for(unsigned int i = 0 ; i < answers.size() ; i++){
-        std::cout << "answer " << i << answers[i] << std::endl;
-    }
-    //fillView(this->pPatterns[index], answers); // just 1 time
 }
 
 // check if 'index' is present in the vector 'list'
