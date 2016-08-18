@@ -36,10 +36,12 @@ private :
     void close();
     std::vector<std::string> getOthersAnswers(int const index); // 4 answers, 1 correct ,3 incorrects, return the 3 incorrects
     void synchronize(std::vector<int> &list);
-    void start(std::vector<int> playlist, std::vector<int> endlist);
+    void start();
     bool contains (int index, std::vector<int> &list);
     void erase(int index, std::vector<int> &list);
     void fillView(Pattern *pattern, std::vector<std::string> answers);
+    std::vector<int> playlist; // all patterns at t=0
+    std::vector<int> endlist; // patterns already find
 public:
     GraphicModel(Model *model); // constructor
     ~GraphicModel(); // destructor

@@ -49,12 +49,10 @@ void GraphicModel::play(std::vector<Pattern *> patterns){
     // if there is at least 1 pattern in the directory /patterns/informations/
     if(patterns.size() > 4){
         copyToVector(patterns); // copy patterns vector to pPatterns
-        std::vector<int> playlist; // all patterns at t=0
-        std::vector<int> endlist; // patterns already find
         std::cout << "synchronize " << std::endl;
-        synchronize(playlist);
+        synchronize(this->playlist);
         std::cout << "start playin'" << std::endl;
-        start(playlist,endlist); // start playing
+        start(); // start playing
     }else{
         std::cout << "Quiz not available." << std::endl
                      << "Please add patterns informations in /patterns/informations/" << std::endl
@@ -99,23 +97,23 @@ void GraphicModel::synchronize(std::vector<int> &list){
     }
 }
 
-void GraphicModel::start(std::vector<int> playlist, std::vector<int> endlist){
+void GraphicModel::start(){
     int index = (rand() % this->pPatterns.size()); // pick a random number € [0, nbPattern-1];
     std::vector<std::string> answers;
-    while(playlist.size() > 0){
-        while(contains(index,endlist)){
+    if(this->playlist.size() > 0){
+        while(contains(index,this->endlist)){
             index = (rand() % (this->pPatterns.size())); // pick a random number € [0, nbPattern-1]
         }
         this->rightAnswer = this->pPatterns[index]; // obv
-        endlist.push_back(index); // add element
-        erase(index, playlist) ; // remove element
+        this->endlist.push_back(index); // add element
+        erase(index, this->playlist) ; // remove element
         answers = getOthersAnswers(index);
-        //fillView(this->pPatterns[index], answers); // fill the ViewQuiz
+        fillView(this->pPatterns[index], answers); // fill the ViewQuiz
     }
     for(unsigned int i = 0 ; i < answers.size() ; i++){
         std::cout << "answer " << i << answers[i] << std::endl;
     }
-    fillView(this->pPatterns[index], answers); // just 1 time
+    //fillView(this->pPatterns[index], answers); // just 1 time
 }
 
 // check if 'index' is present in the vector 'list'
@@ -151,8 +149,10 @@ void GraphicModel::handle(std::string answer){
         msgBox.setWindowTitle("Congratulation");
         msgBox.setTextFormat(Qt::RichText);
         msgBox.setText(msg);
-        msgBox.exec();
         // need to change the question now...
+        if(msgBox.exec() == QMessageBox::Ok){
+            start();
+        }
     }
 }
 
