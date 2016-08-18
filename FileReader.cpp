@@ -99,12 +99,30 @@ std::vector<std::string> const FileReader::getFiles(){
 
 // return QPixmap containing the pattern's image
 QPixmap *FileReader::getImage(std::string link){
-    std::string path = ":/patterns/images/" + link;
-    QPixmap *pImage = new QPixmap();
-    pImage->load(":/patterns/images/singleton.png");
-    std::cout << "PATH " << path << std::endl;
-    if(pImage->isNull()){
-        std::cout << "image null" << std::endl;
+    QDir dir(this->imageDirectory);
+    QString toLoad = QString::fromStdString(this->imageDirectory);
+    /*
+     * Actually I really think there is an easier way to do it,
+     * though it is the only one which work atm.
+     *
+     */
+    if(dir.exists()){
+        QStringList filters;
+        filters << "*.png" ;
+        dir.setNameFilters(filters);
+        QStringList files = dir.entryList();
+        QString unit;
+        std::string unit_toString;
+        for(int i = 0 ; i < files.size() ; i++){
+            unit = files.at(i);
+            unit_toString = unit.toStdString();
+            if(unit_toString.compare(link) == -1){
+                toLoad.append(unit);
+                break;
+            }
+        }
     }
+    QPixmap *pImage = new QPixmap();
+    pImage->load(toLoad);
     return pImage;
 }

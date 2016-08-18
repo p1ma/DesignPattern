@@ -10,6 +10,7 @@
 #include <QPixmap>
 #include <QCoreApplication>
 #include <QFile>
+#include <QDir>
 
 #define LENGTH 512
 
