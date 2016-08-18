@@ -12,7 +12,6 @@ Model::Model()
 // destructor
 Model::~Model(){
     delete pGraphicModel;
-    patterns.clear();
     delete pFileReader;
 }
 

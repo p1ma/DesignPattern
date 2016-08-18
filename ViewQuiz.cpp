@@ -18,6 +18,7 @@ ViewQuiz::ViewQuiz(GraphicModel *pModel) : View(pModel){
 }
 
 ViewQuiz::~ViewQuiz(){
+    delete this->pVerticalLayout;
     delete this->pAnswer;
     delete this->pPattern;
 }

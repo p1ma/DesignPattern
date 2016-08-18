@@ -45,7 +45,14 @@ ViewAnswers::ViewAnswers(GraphicModel *pModel) : View(pModel)
 }
 
 ViewAnswers::~ViewAnswers(){
-
+    delete this->verticalLayout;
+    delete this->answer1;
+    delete this->answer2;
+    delete this->answer3;
+    delete this->answer4;
+    delete this->horizontalLayout_1;
+    delete this->horizontalLayout_2;
+    delete this->confirm;
 }
 
 void ViewAnswers::refresh() const{

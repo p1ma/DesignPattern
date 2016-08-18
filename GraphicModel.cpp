@@ -14,8 +14,6 @@ GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
     //ViewAnswers *answers = new ViewAnswers(this);
     //ViewPattern *pattern = new ViewPattern(this);
     this->pViewQuiz = new ViewQuiz(this);
-    //views.push_back(answers);
-    //views.push_back(pattern);
     views.push_back(this->pViewQuiz);
     srand(std::time(0)); // for random function
     setView(pViewQuiz);
@@ -23,6 +21,8 @@ GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
 
 // destructor
 GraphicModel::~GraphicModel(){
+    this->window->close();
+    delete this->pViewQuiz;
     delete this->window;
 }
 
@@ -67,8 +67,6 @@ void GraphicModel::play(std::vector<Pattern *> patterns){
 void GraphicModel::close(){
     // need timer or smth
     this->window->close();
-    //delete this->pModel;
-    return;
 }
 
  // 4 answers, 1 correct ,3 incorrects, return the 3 incorrects
@@ -154,9 +152,13 @@ void GraphicModel::handle(std::string answer){
         QString msg = QString::fromStdString(rightAnswer->getDescription());
         msg.append("\nMore infos ");
         msg.append("<a href=\"");
-        std::string href = rightAnswer->getURL();
-        href.append("\0");
-        msg.append(QString::fromStdString(href));
+        std::string url = rightAnswer->getURL();
+        char * href = (char *)malloc(sizeof(char) * url.size());
+        for(int i = 0 ; i < url.size() - 1 ; i++){
+            href[i] = url.at(i);
+        }
+        href[url.size() - 1] = '\0';
+        msg.append(href);
         msg.append("\">here</a>");
         // URL problem with factory
         QMessageBox msgBox(pViewQuiz);
@@ -171,9 +173,7 @@ void GraphicModel::handle(std::string answer){
 }
 
 void GraphicModel::fillView(Pattern *pattern, std::vector<std::string> answers){
-        std::cout << "gonna load " << pattern->getImageName() << std::endl;
         QPixmap *pImage = this->pModel->getImage(pattern->getImageName());
-        std::cout << "here" << std::endl;
         this->pViewQuiz->setQuestion(pImage,answers);
         this->show();
 }
