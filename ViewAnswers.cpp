@@ -15,6 +15,10 @@ ViewAnswers::ViewAnswers(GraphicModel *pModel) : View(pModel)
     this->horizontalLayout_2 = new QHBoxLayout();
     this->horizontalLayout_2->setAlignment(this->verticalLayout,Qt::AlignCenter);
     this->horizontalLayout_2->setContentsMargins(5, 5, 5, 5);
+    this->horizontalLayout_3 = new QHBoxLayout();
+    this->horizontalLayout_3->setAlignment(this->verticalLayout,Qt::AlignCenter);
+    this->horizontalLayout_3->setContentsMargins(25, 25, 25, 25);
+
 
     // FILL HORIZONTALS LAYOUTS - test
     this->answer1 = new QRadioButton("Answer ");
@@ -29,6 +33,7 @@ ViewAnswers::ViewAnswers(GraphicModel *pModel) : View(pModel)
 
     // CONFIRM BUTTON
     this->confirm = new QPushButton("Confirm", this);
+    this->horizontalLayout_3->addWidget(this->confirm);
 
     // Connect button signal to appropriate slot
     connect(this->confirm, SIGNAL (clicked()), this, SLOT (confirmClick()));
@@ -36,7 +41,7 @@ ViewAnswers::ViewAnswers(GraphicModel *pModel) : View(pModel)
     // ADD ELEMENTS
     this->verticalLayout->addLayout(this->horizontalLayout_1);
     this->verticalLayout->addLayout(this->horizontalLayout_2);
-    this->verticalLayout->addWidget(this->confirm);
+    this->verticalLayout->addLayout(this->horizontalLayout_3);
 
     // SET LAYOUT
     this->setLayout(this->verticalLayout);
@@ -52,6 +57,7 @@ ViewAnswers::~ViewAnswers(){
     delete this->answer4;
     delete this->horizontalLayout_1;
     delete this->horizontalLayout_2;
+    delete this->horizontalLayout_3;
     delete this->confirm;
 }
 

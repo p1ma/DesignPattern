@@ -19,6 +19,7 @@ private :
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_1;
     QHBoxLayout *horizontalLayout_2;
+    QHBoxLayout *horizontalLayout_3;
     QRadioButton *answer1, *answer2, *answer3, *answer4;
     QPushButton *confirm;
 private slots:
