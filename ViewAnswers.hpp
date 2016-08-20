@@ -22,7 +22,6 @@ private :
     QHBoxLayout *horizontalLayout_3;
     QRadioButton *answer1, *answer2, *answer3, *answer4;
     QPushButton *confirm;
-    QString style;
 private slots:
     void confirmClick();
 public:

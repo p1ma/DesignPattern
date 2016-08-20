@@ -10,10 +10,12 @@ ViewPattern::ViewPattern(GraphicModel *pModel) : View(pModel)
 
     // image
     this->image = new QLabel("");
+    this->image->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
     // add the label to the layout
-    this->verticalLayout->addWidget(this->image, Qt::AlignHCenter);
+    this->verticalLayout->addWidget(this->image, Qt::AlignCenter);
     this->setLayout(this->verticalLayout);
+
 }
 
 ViewPattern::~ViewPattern(){

@@ -2,3 +2,4 @@
 @UML = example # Name of the image from the ../images directory
 @RESUME_FROM = example # Link to a website containing informations regarding this pattern
 @DESCRIPTION = example # description of the pattern
+# INFOS FROM http://www.mcdonaldland.info

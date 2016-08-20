@@ -1,0 +1,4 @@
+@NAME = Facade
+@UML = facade.png
+@RESUME_FROM = https://en.wikipedia.org/wiki/Facade_pattern
+@DESCRIPTION = Provide a unified interface to a set of interfaces in a subsystem. Defines a highlevel interface that makes the subsystem easier to use.

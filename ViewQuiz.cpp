@@ -12,7 +12,7 @@ ViewQuiz::ViewQuiz(GraphicModel *pModel) : View(pModel){
     this->pVerticalLayout = new QVBoxLayout();
     this->pVerticalLayout->setAlignment(Qt::AlignCenter);
     this->pVerticalLayout->setContentsMargins(5, 5, 5, 5);
-    this->pVerticalLayout->addWidget(pPattern, Qt::AlignHCenter);
+    this->pVerticalLayout->addWidget(pPattern, Qt::AlignCenter);
     this->pVerticalLayout->addWidget(pAnswer, Qt::AlignCenter);
     this->setLayout(this->pVerticalLayout);
 }

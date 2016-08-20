@@ -52,9 +52,7 @@ void GraphicModel::play(std::vector<Pattern *> patterns){
     this->endlist.clear();
     if(patterns.size() > 4){
         copyToVector(patterns); // copy patterns vector to pPatterns
-        std::cout << "synchronize " << std::endl;
         synchronize(this->playlist);
-        std::cout << "start playin'" << std::endl;
         start(); // start playing
     }else{
         std::cout << "Quiz not available." << std::endl
@@ -151,11 +149,11 @@ void GraphicModel::erase(int index, std::vector<int> &list){
 void GraphicModel::handle(std::string answer){
     if((rightAnswer->getName()).compare(answer) == 0){
         QString msg = QString::fromStdString(rightAnswer->getDescription());
-        msg.append("\nMore infos ");
+        msg.append("<br>More infos ");
         msg.append("<a href=\"");
         std::string url = rightAnswer->getURL();
         char * href = (char *)malloc(sizeof(char) * url.size());
-        for(int i = 0 ; i < url.size() - 1 ; i++){
+        for(unsigned int i = 0 ; i < (url.size() - 1) ; i++){
             href[i] = url.at(i);
         }
         href[url.size() - 1] = '\0';

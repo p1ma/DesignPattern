@@ -12,6 +12,7 @@ class View : public QWidget
 protected :
     GraphicModel *pGraphicModel;
     QPalette Pal;
+    QString style;
 public:
     View(GraphicModel *pModel);
     virtual void refresh() const=0;
