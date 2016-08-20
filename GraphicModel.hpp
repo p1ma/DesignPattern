@@ -8,9 +8,12 @@
 #include <ctime>
 #include <QMessageBox>
 #include <QColor>
+#include <QMenuBar>
+#include <QMenu>
 #include "View.hpp"
 #include "ViewQuiz.hpp"
 #include "Pattern.hpp"
+#include "MenuBar.hpp"
 
 class Model;
 
@@ -19,7 +22,8 @@ class GraphicModel : QObject
     Q_OBJECT
         class MyWindow : public QMainWindow {
         public:
-            MyWindow () : QMainWindow() {}
+            MyWindow () : QMainWindow() {
+            }
 
         protected:
             void keyPressEvent(QKeyEvent *e) {
@@ -29,6 +33,7 @@ class GraphicModel : QObject
         };
 private :
     MyWindow *window;
+    MenuBar *pMenuBar;
     std::vector<View*> views;
     ViewQuiz *pViewQuiz;
     Model *pModel;

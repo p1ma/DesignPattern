@@ -8,14 +8,18 @@ GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
     this->window = new MyWindow();
     this->window->setFixedSize(WIDTH,HEIGHT);
     this->window->setWindowTitle(QString::fromUtf8("Pattern Quiz") );
-    //this->window->show();
+
+    // MENUBAR
+    this->pMenuBar = new MenuBar(model,this->window);
+    this->window->setMenuBar(this->pMenuBar);
+    this->window->menuBar()->setVisible(true);
 
     // instanciate views
     //ViewAnswers *answers = new ViewAnswers(this);
     //ViewPattern *pattern = new ViewPattern(this);
     this->pViewQuiz = new ViewQuiz(this);
     views.push_back(this->pViewQuiz);
-    srand(std::time(0)); // for random function
+    srand(std::time(0)); // for rand() function
     setView(pViewQuiz);
     setColor(QColor(234,234,180)); // beige
 }
