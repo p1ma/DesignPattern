@@ -1,6 +1,7 @@
 #include "GraphicModel.hpp"
 
 #include "Model.hpp"
+#include "MenuBar.hpp"
 
 // constructor
 GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
@@ -10,7 +11,7 @@ GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
     this->window->setWindowTitle(QString::fromUtf8("Pattern Quiz") );
 
     // MENUBAR
-    this->pMenuBar = new MenuBar(model,this->window);
+    this->pMenuBar = new MenuBar(this);
     this->window->setMenuBar(this->pMenuBar);
     this->window->menuBar()->setVisible(true);
 

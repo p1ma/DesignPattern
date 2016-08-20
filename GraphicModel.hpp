@@ -13,9 +13,9 @@
 #include "View.hpp"
 #include "ViewQuiz.hpp"
 #include "Pattern.hpp"
-#include "MenuBar.hpp"
 
 class Model;
+class MenuBar;
 
 class GraphicModel : QObject
 {
@@ -39,7 +39,6 @@ private :
     Model *pModel;
     std::vector<Pattern *> pPatterns;
     Pattern *rightAnswer;
-    void close();
     std::vector<std::string> getOthersAnswers(int const index); // 4 answers, 1 correct ,3 incorrects, return the 3 incorrects
     void synchronize(std::vector<int> &list);
     void start();
@@ -58,6 +57,7 @@ public:
     void copyToVector(std::vector<Pattern *> patterns); // copy patterns to pPatterns
     void handle(std::string answer);
     void setColor(QColor color); // set ViewQuiz color
+    void close();
     static const int WIDTH = 600;
     static const int HEIGHT = 800;
 };

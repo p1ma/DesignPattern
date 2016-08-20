@@ -2,18 +2,29 @@
 #define MENUBAR_HPP
 
 #include <QMenuBar>
-
-class Model;
-class QMainWindow;
+#include <QMenu>
+#include <QAction>
+#include <QActionGroup>
+#include "GraphicModel.hpp"
+#include <QInputDialog>
 
 class MenuBar : public QMenuBar
 {
+    Q_OBJECT
 private :
-    Model *pModel;
-    QMainWindow *pWindow;
+    GraphicModel* const pGraphicModel;
+    QMenu *file;
+    QMenu *patternInfos;
+    QAction *exit;
+    QAction *addPattern;
+    QAction *informations;
+    QActionGroup *groupFile;
 public:
-    MenuBar(Model *model, QMainWindow *window);
+    MenuBar(GraphicModel* const model);
     ~MenuBar();
+private slots:
+    void exitWindow();
+    void addNewPattern();
 };
 
 #endif // MENUBAR_HPP
