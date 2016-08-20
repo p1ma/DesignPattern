@@ -26,6 +26,10 @@ private :
     QAction *addPattern;
     QAction *informations;
     QActionGroup *groupFile;
+    QLineEdit *name;
+    QLineEdit *url;
+    QLineEdit *image;
+    QTextEdit *description;
 public:
     MenuBar(GraphicModel* const model);
     ~MenuBar();
@@ -33,6 +37,8 @@ private slots:
     void exitWindow();
     void addNewPattern();
     void chooseFile();
+    void accept();
+    void reject();
 };
 
 #endif // MENUBAR_HPP

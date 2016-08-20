@@ -38,14 +38,14 @@ void MenuBar::addNewPattern(){
     QDialog dialog(this);
     dialog.setWindowTitle("Add new pattern");
     QFormLayout form(&dialog);
-    QLineEdit *name = new QLineEdit(&dialog);
-    QTextEdit *description = new QTextEdit(&dialog);
+    name = new QLineEdit(&dialog);
+    description = new QTextEdit(&dialog);
     description->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    QLineEdit *url = new QLineEdit(&dialog);
-    QLineEdit *image = new QLineEdit(&dialog);
+    url = new QLineEdit(&dialog);
+    image = new QLineEdit(&dialog);
     image->setText("click here");
     image->setReadOnly(true);
-    connect(image, SIGNAL(clicked()), this, SLOT(chooseFile()));
+    connect(image, SIGNAL(selectionChanged()), this, SLOT(chooseFile()));
     form.addRow(new QLabel("Please fill this form."));
     form.addRow("Name : ", name);
     form.addRow("Description : ", description);
@@ -54,13 +54,29 @@ void MenuBar::addNewPattern(){
 
     QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
                                Qt::Horizontal, &dialog);
+    QObject::connect(&buttonBox, SIGNAL(accepted()), &dialog, SLOT(accept()));
+    QObject::connect(&buttonBox, SIGNAL(rejected()), &dialog, SLOT(reject()));
     form.addRow(&buttonBox);
 
-    if (dialog.exec() == QDialog::Accepted) {
+    if (dialog.exec() == QDialogButtonBox::Ok) {
 
     }
 }
 
 void MenuBar::chooseFile(){
-    QFileDialog::getOpenFileNames(this, "Select a file to open...", QDir::homePath());
+    QFileDialog dialog;
+    QString filter = tr("PNG (*.png)");
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    QStringList list = dialog.getOpenFileNames(this, "Select a file...", QDir::homePath(), tr("PNG (*.png)"), &filter);
+    if(list.size() > 0){
+        this->image->setText(list.at(0));
+    }
+}
+
+void MenuBar::accept(){
+
+}
+
+void MenuBar::reject(){
+
 }
