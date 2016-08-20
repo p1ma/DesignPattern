@@ -9,10 +9,10 @@ ViewPattern::ViewPattern(GraphicModel *pModel) : View(pModel)
     this->verticalLayout->setContentsMargins(10, 10, 10, 10);
 
     // image
-    this->image = new QLabel("TEST");
+    this->image = new QLabel("");
 
     // add the label to the layout
-    this->verticalLayout->addWidget(this->image);
+    this->verticalLayout->addWidget(this->image, Qt::AlignHCenter);
     this->setLayout(this->verticalLayout);
 }
 

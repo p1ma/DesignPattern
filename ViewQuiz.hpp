@@ -22,6 +22,7 @@ public:
     ~ViewQuiz();
     virtual void refresh() const;
     void setQuestion(QPixmap *image, std::vector<std::string> answers);
+    void setViewsColor(QColor color); // set ViewAnswer and ViewPattern background color
 };
 
 #endif // VIEWQUIZ_HPP

@@ -12,8 +12,8 @@ ViewQuiz::ViewQuiz(GraphicModel *pModel) : View(pModel){
     this->pVerticalLayout = new QVBoxLayout();
     this->pVerticalLayout->setAlignment(Qt::AlignCenter);
     this->pVerticalLayout->setContentsMargins(5, 5, 5, 5);
-    this->pVerticalLayout->addWidget(pPattern);
-    this->pVerticalLayout->addWidget(pAnswer);
+    this->pVerticalLayout->addWidget(pPattern, Qt::AlignHCenter);
+    this->pVerticalLayout->addWidget(pAnswer, Qt::AlignCenter);
     this->setLayout(this->pVerticalLayout);
 }
 
@@ -33,3 +33,10 @@ void ViewQuiz::setQuestion(QPixmap *image, std::vector<std::string> answers){
     this->pAnswer->setAnswers(answers);
     this->pPattern->setImage(image);
 }
+
+// set ViewAnswer and ViewPattern background color
+void ViewQuiz::setViewsColor(QColor color){
+    this->pAnswer->setColor(color);
+    this->pPattern->setColor(color);
+}
+

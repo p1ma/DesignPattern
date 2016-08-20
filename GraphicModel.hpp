@@ -7,6 +7,7 @@
 #include <iostream>
 #include <ctime>
 #include <QMessageBox>
+#include <QColor>
 #include "View.hpp"
 #include "ViewQuiz.hpp"
 #include "Pattern.hpp"
@@ -51,6 +52,7 @@ public:
     void play(std::vector<Pattern *> patterns); // start graphic quiz
     void copyToVector(std::vector<Pattern *> patterns); // copy patterns to pPatterns
     void handle(std::string answer);
+    void setColor(QColor color); // set ViewQuiz color
     static const int WIDTH = 600;
     static const int HEIGHT = 800;
 };

@@ -46,6 +46,13 @@ ViewAnswers::ViewAnswers(GraphicModel *pModel) : View(pModel)
     // SET LAYOUT
     this->setLayout(this->verticalLayout);
 
+    // STYLE
+    this->style = "QRadioButton {font: bold 14px; color: black; border-style: outset;}";
+    this->answer1->setStyleSheet(this->style);
+    this->answer2->setStyleSheet(this->style);
+    this->answer3->setStyleSheet(this->style);
+    this->answer4->setStyleSheet(this->style);
+
     srand(std::time(0));
 }
 
