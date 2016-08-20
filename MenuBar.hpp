@@ -6,7 +6,14 @@
 #include <QAction>
 #include <QActionGroup>
 #include "GraphicModel.hpp"
-#include <QInputDialog>
+#include <QDialog>
+#include <QFormLayout>
+#include <QLabel>
+#include <QLineEdit>
+#include <QTextEdit>
+#include <QDialogButtonBox>
+#include <QFileDialog>
+#include <QDir>
 
 class MenuBar : public QMenuBar
 {
@@ -25,6 +32,7 @@ public:
 private slots:
     void exitWindow();
     void addNewPattern();
+    void chooseFile();
 };
 
 #endif // MENUBAR_HPP
