@@ -17,7 +17,7 @@ GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
     views.push_back(this->pViewQuiz);
     srand(std::time(0)); // for random function
     setView(pViewQuiz);
-    setColor(QColor(128,128,128)); // gray
+    setColor(QColor(234,234,180)); // beige
 }
 
 // destructor

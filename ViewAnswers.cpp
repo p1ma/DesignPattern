@@ -52,6 +52,8 @@ ViewAnswers::ViewAnswers(GraphicModel *pModel) : View(pModel)
     this->answer2->setStyleSheet(this->style);
     this->answer3->setStyleSheet(this->style);
     this->answer4->setStyleSheet(this->style);
+    this->style = "QPushButton {font: bold 16px; color: black; background-color: beige ; min-width: 10em; padding: 6px; border-style: outset; border-width: 2px; border-radius: 10px;}";
+    this->confirm->setStyleSheet(this->style);
 
     srand(std::time(0));
 }
