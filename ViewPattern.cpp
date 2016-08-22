@@ -29,4 +29,8 @@ void ViewPattern::refresh() const{
 
 void ViewPattern::setImage(QPixmap *image){
     this->image->setPixmap(*image);
+    if(image->height() > this->height() || image->width() > this->width()){
+        this->image->setScaledContents(true);
+        this->image->adjustSize();
+    }
 }

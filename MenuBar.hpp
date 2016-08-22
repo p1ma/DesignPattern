@@ -42,6 +42,7 @@ private slots:
     void chooseFile();
     void accept();
     void reject();
+    void seeInformations();
 };
 
 #endif // MENUBAR_HPP

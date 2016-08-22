@@ -23,6 +23,8 @@ MenuBar::MenuBar(GraphicModel* const graphic) : QMenuBar(0), pGraphicModel(graph
     for(unsigned int i = 0 ; i < pPatterns.size() ; i++){
         QAction *a = new QAction(tr(pPatterns[i]->getName().c_str()),this->informations);
         this->pPatternList.push_back(a);
+        connect(a, SIGNAL(triggered()), this, SLOT(seeInformations()));
+
     }
 
     // fill QMenu informations
@@ -102,13 +104,24 @@ void MenuBar::accept(){
         bool ok = (formName.isEmpty() || formUrl.isEmpty() || formDescription.isEmpty() || formImage.isEmpty());
         if(ok || !begin){
             // one of them (at least) is empty
-            QMessageBox::information(this, "Error", "Field(s) incorrect(s)");
+            QMessageBox::information(this, "Error", "Incorrect(s) field(s) !");
         }else{
-            QMessageBox::information(this, "Success", "Design Pattern added");
+            QMessageBox::information(this, "Success", "Design Pattern added.");
             pGraphicModel->add(formName.toStdString(), formUrl.toStdString(), formDescription.toStdString(), formImage.toStdString());
         }
 }
 
 void MenuBar::reject(){
     // cancel = no action to do
+}
+
+// select pattern
+void MenuBar::seeInformations(){
+    QAction *action = qobject_cast<QAction *>(this->sender());
+    if(action != NULL){
+        unsigned int index = pPatternList.indexOf(action,0);
+        std::vector<Pattern *> pPatterns = pGraphicModel->getList();
+        Pattern *p = pPatterns[index];
+        std::cout << p->getInformations() << std::endl;
+    }
 }
