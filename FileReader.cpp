@@ -106,6 +106,7 @@ QPixmap *FileReader::getImage(std::string link){
      * though it is the only one which work atm.
      *
      */
+    std::cout << "SEARCH " << link << std::endl;
     if(dir.exists()){
         QStringList filters;
         filters << "*.png" ;
@@ -143,12 +144,12 @@ char *FileReader::getImageDirectory(){
 }
 
 // compare the 2 strings
-inline bool FileReader::compare(std::string s1, std::string s2){
+bool FileReader::compare(std::string s1, std::string s2){
     size_t size = s1.size();
     if(size > s2.size()){
         size = s2.size();
     }
-
+    std::cout << "compare " << s1 << " to " << s2 << std::endl;
     for(size_t t = 0 ; t < size ; t++){
         if(s1[t] != s2[t]){
             return false;

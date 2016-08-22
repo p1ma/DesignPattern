@@ -15,6 +15,7 @@
 #include <QFileDialog>
 #include <QDir>
 #include <iostream>
+#include <Pattern.hpp>
 
 class MenuBar : public QMenuBar
 {
@@ -25,7 +26,8 @@ private :
     QMenu *patternInfos;
     QAction *exit;
     QAction *addPattern;
-    QAction *informations;
+    QList<QAction *> pPatternList;
+    QMenu *informations;
     QActionGroup *groupFile;
     QLineEdit *name;
     QLineEdit *url;

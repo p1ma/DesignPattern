@@ -195,6 +195,16 @@ void GraphicModel::add(std::string name, std::string url, std::string descriptio
 
 // update the pattern list
 void GraphicModel::updateList(std::vector<Pattern *> patterns){
-    this->window->update();
-    play(patterns);
+    //this->window->update();
+    //play(patterns);
+}
+
+// return pPattern size
+unsigned int GraphicModel::getSize(){
+    return pPatterns.size();
+}
+
+//return pPatterns
+std::vector<Pattern *> GraphicModel::getList(){
+    return pModel->getList();
 }

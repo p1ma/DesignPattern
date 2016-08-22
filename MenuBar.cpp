@@ -14,10 +14,22 @@ MenuBar::MenuBar(GraphicModel* const graphic) : QMenuBar(0), pGraphicModel(graph
         // QACTION ADD NEW PATTERN
     this->addPattern = new QAction(tr("&New pattern"), this->patternInfos);
     connect(this->addPattern, SIGNAL(triggered()), this, SLOT(addNewPattern()));
-        // QACTION INFORMATIONS
-    this->informations = new QAction(tr("&Informations"), this->patternInfos);
+        // QMENU INFORMATION
+    this->informations = new QMenu(tr("&Informations"));
+    //fillQActions();
+
+    std::vector<Pattern *> pPatterns = pGraphicModel->getList();
+    std::cout << "PATTERN SIZE : " << pPatterns.size() << std::endl;
+    for(unsigned int i = 0 ; i < pPatterns.size() ; i++){
+        QAction *a = new QAction(tr(pPatterns[i]->getName().c_str()),this->informations);
+        this->pPatternList.push_back(a);
+    }
+
+    // fill QMenu informations
+    this->informations->addActions(pPatternList);
+
     this->patternInfos->addAction(this->addPattern);
-    this->patternInfos->addAction(this->informations);
+    this->patternInfos->addMenu(this->informations);
 
 
     // ADD MENU TO MENUBAR

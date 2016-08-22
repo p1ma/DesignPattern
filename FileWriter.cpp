@@ -13,7 +13,7 @@ FileWriter::~FileWriter(){
 // write 2 new files, one with the pattern's information (name, description, ulr) and image (.png)
 Pattern *FileWriter::write(std::string name, std::string url, std::string description, std::string image){
    std::locale loc;
-   std::string formatedName = name + '\0',fileName = name + '\0';
+   std::string formatedName = name ,fileName = name;
 
    // LOWER ALL CHARATECTERS FOR FILENAME
    std::transform(fileName.begin(), fileName.end(), fileName.begin(), ::tolower);
@@ -31,11 +31,16 @@ Pattern *FileWriter::write(std::string name, std::string url, std::string descri
    file.open(path, std::ofstream::out | std::ofstream::app);
 
    // if the file is open, then i can write the infos inside
+   std::string nameF,umlF,resumeF,descriptionF;
+   nameF = "@NAME = " + ( formatedName + "\n\0" );
+   umlF = "@UML = " + (fileName + ".png\n\0");
+   resumeF  = "@RESUME_FROM = " + ( url + "\n\0" );
+   descriptionF = "@DESCRIPTION = " + ( description + "\n\0" );
    if (file.is_open()){
-       file << "@NAME = " << formatedName << std::endl;
-       file << "@UML = " << (fileName + ".png") << std::endl;
-       file << "@RESUME_FROM = " << (url + '\0') << std::endl;
-       file << "@DESCRIPTION = " << (description + '\0') << std::endl;
+       file << nameF;
+       file << umlF;
+       file << resumeF;
+       file << descriptionF;
    }
    file.close();
 
@@ -67,5 +72,5 @@ Pattern *FileWriter::write(std::string name, std::string url, std::string descri
    }
    file.close();
 
-   return new Pattern(formatedName, (fileName + ".png"), (url + '\0'), (description + '\0'));
+   return new Pattern(nameF,  umlF, resumeF, descriptionF);
 }

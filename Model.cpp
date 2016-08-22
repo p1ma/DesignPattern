@@ -3,10 +3,10 @@
 //constructor
 Model::Model()
 {
-    this->pGraphicModel = new GraphicModel(this);
     this->pFileReader = new FileReader();
     this->pFileWriter = new FileWriter(pFileReader->getDirectory(), pFileReader->getImageDirectory());
     fillVector();
+    this->pGraphicModel = new GraphicModel(this);
     this->pGraphicModel->show();
 }
 
@@ -58,5 +58,12 @@ QPixmap *Model::getImage(std::string const name){
 void Model::add(std::string name, std::string url, std::string description, std::string image){
     Pattern *p = this->pFileWriter->write(name,url,description,image);
     this->patterns.push_back(p);
-    this->pGraphicModel->updateList(this->patterns);
+    std::cout << "THIS PATTERN HAS BEEN ADDED" << std::endl;
+    std::cout << p->getInformations() << std::endl;
+    play();
+}
+
+// return patterns
+std::vector<Pattern *> Model::getList(){
+    return this->patterns;
 }

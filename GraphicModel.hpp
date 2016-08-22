@@ -60,6 +60,8 @@ public:
     void close();
     void add(std::string name, std::string url, std::string description, std::string image);
     void updateList(std::vector<Pattern *> patterns);
+    unsigned int getSize(); // return pPatterns.size()
+    std::vector<Pattern *> getList(); //return pPatterns
     static const int WIDTH = 600;
     static const int HEIGHT = 800;
 };
