@@ -129,3 +129,13 @@ QPixmap *FileReader::getImage(std::string link){
     }
     return pImage;
 }
+
+// return directory
+char *FileReader::getDirectory(){
+    return this->directory;
+}
+
+// return imageDirectory
+char *FileReader::getImageDirectory(){
+    return this->imageDirectory;
+}

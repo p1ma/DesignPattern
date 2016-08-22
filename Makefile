@@ -54,7 +54,8 @@ SOURCES       = main.cpp \
 		ViewAnswers.cpp \
 		Model.cpp \
 		ViewQuiz.cpp \
-		MenuBar.cpp qrc_DesignPattern.cpp \
+		MenuBar.cpp \
+		FileWriter.cpp qrc_DesignPattern.cpp \
 		moc_GraphicModel.cpp \
 		moc_ViewPattern.cpp \
 		moc_ViewAnswers.cpp \
@@ -70,6 +71,7 @@ OBJECTS       = main.o \
 		Model.o \
 		ViewQuiz.o \
 		MenuBar.o \
+		FileWriter.o \
 		qrc_DesignPattern.o \
 		moc_GraphicModel.o \
 		moc_ViewPattern.o \
@@ -313,7 +315,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/DesignPattern1.0.0 || mkdir -p .tmp/DesignPattern1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/DesignPattern1.0.0/ && $(COPY_FILE) --parents DesignPattern.qrc .tmp/DesignPattern1.0.0/ && $(COPY_FILE) --parents FileReader.hpp Pattern.hpp GraphicModel.hpp View.hpp ViewPattern.hpp ViewAnswers.hpp Model.hpp ViewQuiz.hpp MenuBar.hpp .tmp/DesignPattern1.0.0/ && $(COPY_FILE) --parents main.cpp FileReader.cpp Pattern.cpp GraphicModel.cpp View.cpp ViewPattern.cpp ViewAnswers.cpp Model.cpp ViewQuiz.cpp MenuBar.cpp .tmp/DesignPattern1.0.0/ && (cd `dirname .tmp/DesignPattern1.0.0` && $(TAR) DesignPattern1.0.0.tar DesignPattern1.0.0 && $(COMPRESS) DesignPattern1.0.0.tar) && $(MOVE) `dirname .tmp/DesignPattern1.0.0`/DesignPattern1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/DesignPattern1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/DesignPattern1.0.0/ && $(COPY_FILE) --parents DesignPattern.qrc .tmp/DesignPattern1.0.0/ && $(COPY_FILE) --parents FileReader.hpp Pattern.hpp GraphicModel.hpp View.hpp ViewPattern.hpp ViewAnswers.hpp Model.hpp ViewQuiz.hpp MenuBar.hpp FileWriter.hpp .tmp/DesignPattern1.0.0/ && $(COPY_FILE) --parents main.cpp FileReader.cpp Pattern.cpp GraphicModel.cpp View.cpp ViewPattern.cpp ViewAnswers.cpp Model.cpp ViewQuiz.cpp MenuBar.cpp FileWriter.cpp .tmp/DesignPattern1.0.0/ && (cd `dirname .tmp/DesignPattern1.0.0` && $(TAR) DesignPattern1.0.0.tar DesignPattern1.0.0 && $(COMPRESS) DesignPattern1.0.0.tar) && $(MOVE) `dirname .tmp/DesignPattern1.0.0`/DesignPattern1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/DesignPattern1.0.0
 
 
 clean:compiler_clean 
@@ -339,10 +341,10 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_DesignPattern.cpp
 qrc_DesignPattern.cpp: DesignPattern.qrc \
 		patterns/images/singleton.png \
-		patterns/images/strategy.png \
-		patterns/images/mvc.png \
+		patterns/images/state.png \
 		patterns/images/factory.png \
-		patterns/images/state.png
+		patterns/images/strategy.png \
+		patterns/images/mvc.png
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name DesignPattern DesignPattern.qrc -o qrc_DesignPattern.cpp
 
 compiler_moc_header_make_all: moc_GraphicModel.cpp moc_ViewPattern.cpp moc_ViewAnswers.cpp moc_ViewQuiz.cpp moc_MenuBar.cpp
@@ -1208,6 +1210,7 @@ main.o: main.cpp Model.hpp \
 		/usr/include/qt5/QtCore/QDir \
 		/usr/include/qt5/QtCore/qdir.h \
 		/usr/include/qt5/QtCore/qfileinfo.h \
+		FileWriter.hpp \
 		/usr/include/qt5/QtWidgets/QApplication \
 		/usr/include/qt5/QtWidgets/qapplication.h \
 		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
@@ -1460,6 +1463,7 @@ GraphicModel.o: GraphicModel.cpp GraphicModel.hpp \
 		/usr/include/qt5/QtCore/QDir \
 		/usr/include/qt5/QtCore/qdir.h \
 		/usr/include/qt5/QtCore/qfileinfo.h \
+		FileWriter.hpp \
 		MenuBar.hpp \
 		/usr/include/qt5/QtWidgets/QAction \
 		/usr/include/qt5/QtWidgets/QActionGroup \
@@ -2024,7 +2028,8 @@ Model.o: Model.cpp Model.hpp \
 		/usr/include/qt5/QtCore/QFile \
 		/usr/include/qt5/QtCore/QDir \
 		/usr/include/qt5/QtCore/qdir.h \
-		/usr/include/qt5/QtCore/qfileinfo.h
+		/usr/include/qt5/QtCore/qfileinfo.h \
+		FileWriter.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Model.o Model.cpp
 
 ViewQuiz.o: ViewQuiz.cpp ViewQuiz.hpp \
@@ -2336,6 +2341,9 @@ MenuBar.o: MenuBar.cpp MenuBar.hpp \
 		/usr/include/qt5/QtCore/qfileinfo.h \
 		/usr/include/qt5/QtCore/QDir
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MenuBar.o MenuBar.cpp
+
+FileWriter.o: FileWriter.cpp FileWriter.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o FileWriter.o FileWriter.cpp
 
 qrc_DesignPattern.o: qrc_DesignPattern.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_DesignPattern.o qrc_DesignPattern.cpp

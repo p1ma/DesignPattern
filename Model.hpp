@@ -4,6 +4,7 @@
 #include "GraphicModel.hpp"
 #include "Pattern.hpp"
 #include "FileReader.hpp"
+#include "FileWriter.hpp"
 #include <QPixmap>
 #include <vector>
 
@@ -13,6 +14,7 @@ private :
     GraphicModel *pGraphicModel;
     std::vector<Pattern *> patterns;
     FileReader *pFileReader;
+    FileWriter *pFileWriter;
     void fillVector(); // fill the vector with all the patterns find in the directory patterns/informations/
 public:
     Model();

@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     ViewAnswers.cpp \
     Model.cpp \
     ViewQuiz.cpp \
-    MenuBar.cpp
+    MenuBar.cpp \
+    FileWriter.cpp
 
 HEADERS  +=\
             FileReader.hpp\
@@ -30,7 +31,8 @@ HEADERS  +=\
     ViewAnswers.hpp \
     Model.hpp \
     ViewQuiz.hpp \
-    MenuBar.hpp
+    MenuBar.hpp \
+    FileWriter.hpp
 
 RESOURCES += \
     DesignPattern.qrc

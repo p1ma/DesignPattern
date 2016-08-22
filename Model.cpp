@@ -5,6 +5,7 @@ Model::Model()
 {
     this->pGraphicModel = new GraphicModel(this);
     this->pFileReader = new FileReader();
+    this->pFileWriter = new FileWriter(pFileReader->getDirectory(), pFileReader->getImageDirectory());
     fillVector();
     this->pGraphicModel->show();
 }
@@ -13,6 +14,7 @@ Model::Model()
 Model::~Model(){
     delete pGraphicModel;
     delete pFileReader;
+    delete pFileWriter;
 }
 
 // fill the vector with all the patterns find in the directory patterns/informations/
@@ -54,5 +56,5 @@ QPixmap *Model::getImage(std::string const name){
 
 // add a new pattern
 void Model::add(std::string name, std::string url, std::string description, std::string image){
-
+    this->pFileWriter->write(name,url,description,image);
 }
