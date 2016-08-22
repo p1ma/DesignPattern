@@ -116,16 +116,18 @@ QPixmap *FileReader::getImage(std::string link){
         for(int i = 0 ; i < files.size() ; i++){
             unit = files.at(i);
             unit_toString = unit.toStdString();
-            if(unit_toString.compare(link) == -1){
+            if(compare(unit_toString,link)){
                 toLoad.append(unit);
                 break;
             }
         }
     }
     QPixmap *pImage = new QPixmap();
+    std::cout << "IMAGE LOADED : " << toLoad.toStdString() << std::endl;
     pImage->load(toLoad);
     if(pImage->isNull()){
         pImage = new QPixmap(500,500); // blank image
+        std::cout << "IMAGE NULL" << std::endl;
     }
     return pImage;
 }
@@ -138,4 +140,19 @@ char *FileReader::getDirectory(){
 // return imageDirectory
 char *FileReader::getImageDirectory(){
     return this->imageDirectory;
+}
+
+// compare the 2 strings
+inline bool FileReader::compare(std::string s1, std::string s2){
+    size_t size = s1.size();
+    if(size > s2.size()){
+        size = s2.size();
+    }
+
+    for(size_t t = 0 ; t < size ; t++){
+        if(s1[t] != s2[t]){
+            return false;
+        }
+    }
+    return true;
 }

@@ -177,6 +177,7 @@ void GraphicModel::handle(std::string answer){
 }
 
 void GraphicModel::fillView(Pattern *pattern, std::vector<std::string> answers){
+    std::cout << pattern->getInformations()<< std::endl;
         QPixmap *pImage = this->pModel->getImage(pattern->getImageName());
         this->pViewQuiz->setQuestion(pImage,answers);
         this->show();
@@ -190,4 +191,10 @@ void GraphicModel::setColor(QColor color){
 //Add a new Pattern to the pattern pool
 void GraphicModel::add(std::string name, std::string url, std::string description, std::string image){
     this->pModel->add(name,url,description,image);
+}
+
+// update the pattern list
+void GraphicModel::updateList(std::vector<Pattern *> patterns){
+    this->window->update();
+    play(patterns);
 }

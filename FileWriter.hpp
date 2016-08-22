@@ -6,6 +6,7 @@
 #include <fstream>
 #include <locale>
 #include <algorithm>
+#include "Pattern.hpp"
 
 class FileWriter
 {
@@ -15,7 +16,7 @@ private :
 public:
     FileWriter(char *pathInformationsDirectory, char *pathImageDirectory);
     ~FileWriter();
-    void write(std::string name, std::string url, std::string description, std::string image);
+    Pattern *write(std::string name, std::string url, std::string description, std::string image);
 };
 
 #endif // FILEWRITER_HPP

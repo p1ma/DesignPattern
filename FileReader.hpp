@@ -22,6 +22,7 @@ private :
   char *imageDirectory;
   inline bool exist(const std::string& name);
   std::string read(const std::string& name);
+  inline bool compare(std::string s1, std::string s2);
 public :
   FileReader(); // constructor
   ~FileReader(); // destructor

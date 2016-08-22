@@ -20,6 +20,13 @@ Pattern::Pattern(std::string const param){
   }
 }
 
+Pattern::Pattern(std::string nameP, std::string img,  std::string url, std::string descriptionP){
+    this->name = nameP;
+    this->image_name = img;
+    this->url_informations = url;
+    this->description = descriptionP;
+}
+
 // destructor
 Pattern::~Pattern(){
 }

@@ -11,10 +11,10 @@ FileWriter::~FileWriter(){
 }
 
 // write 2 new files, one with the pattern's information (name, description, ulr) and image (.png)
-void FileWriter::write(std::string name, std::string url, std::string description, std::string image){
+Pattern *FileWriter::write(std::string name, std::string url, std::string description, std::string image){
    std::locale loc;
-   std::string formatedName = name,fileName = name;
-   std::cout << "NAME : " << name << std::endl;
+   std::string formatedName = name + '\0',fileName = name + '\0';
+
    // LOWER ALL CHARATECTERS FOR FILENAME
    std::transform(fileName.begin(), fileName.end(), fileName.begin(), ::tolower);
    std::string::iterator it=formatedName.begin();
@@ -33,11 +33,10 @@ void FileWriter::write(std::string name, std::string url, std::string descriptio
    // if the file is open, then i can write the infos inside
    if (file.is_open()){
        file << "@NAME = " << formatedName << std::endl;
-       file << "@UML = " << pattern << std::endl;
-       file << "@RESUME_FROM = " << url << std::endl;
-       file << "@DESCRIPTION = " << description << std::endl;
+       file << "@UML = " << (fileName + ".png") << std::endl;
+       file << "@RESUME_FROM = " << (url + '\0') << std::endl;
+       file << "@DESCRIPTION = " << (description + '\0') << std::endl;
    }
-   std::cout << "file " << path << " over" << std::endl;
    file.close();
 
    // read the .png image using 'image' path
@@ -67,4 +66,6 @@ void FileWriter::write(std::string name, std::string url, std::string descriptio
         file.write(buffer,size);
    }
    file.close();
+
+   return new Pattern(formatedName, (fileName + ".png"), (url + '\0'), (description + '\0'));
 }

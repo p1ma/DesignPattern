@@ -95,7 +95,6 @@ void MenuBar::accept(){
             QMessageBox::information(this, "Success", "Design Pattern added");
             pGraphicModel->add(formName.toStdString(), formUrl.toStdString(), formDescription.toStdString(), formImage.toStdString());
         }
-
 }
 
 void MenuBar::reject(){

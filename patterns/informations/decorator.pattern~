@@ -1,5 +1,5 @@
 @NAME = Decorator
 @UML = decorator.png
 @RESUME_FROM = https://en.wikipedia.org/wiki/Decorator_pattern
-@DESCRIPTION = Compose objects into tree structures to represent part-whole hierarchies. 
-Lets clients treat individual objects and compositions of objects uniformly.
+@DESCRIPTION = Attach additional responsibilities to an object dynamically. 
+Provide a flexible alternative to sub-classing for extending functionality.

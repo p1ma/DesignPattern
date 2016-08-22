@@ -23,6 +23,7 @@ private :
   std::string description; // pattern's description
 public :
   Pattern(std::string const param); // constructor
+  Pattern(std::string nameP, std::string img, std::string url, std::string descriptionP);
   ~Pattern(); // destructor
   std::string const getInformations(); // pattern's informations
   std::string const getName(); // return pattern's name

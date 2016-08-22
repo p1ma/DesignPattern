@@ -1,5 +1,0 @@
-@NAME = Iterator
-@UML = iterator.png
-@RESUME_FROM = https://en.wikipedia.org/wiki/Iterator_pattern
-@DESCRIPTION = Provide a way to access the elements of an aggregate object sequentially without
-exposing its underlying representation.

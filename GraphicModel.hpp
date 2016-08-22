@@ -59,6 +59,7 @@ public:
     void setColor(QColor color); // set ViewQuiz color
     void close();
     void add(std::string name, std::string url, std::string description, std::string image);
+    void updateList(std::vector<Pattern *> patterns);
     static const int WIDTH = 600;
     static const int HEIGHT = 800;
 };
