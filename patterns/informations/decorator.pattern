@@ -1,0 +1,5 @@
+@NAME = Decorator
+@UML = decorator.png
+@RESUME_FROM = https://en.wikipedia.org/wiki/Decorator_pattern
+@DESCRIPTION = Attach additional responsibilities to an object dynamically. 
+Provide a flexible alternative to sub-classing for extending functionality.
