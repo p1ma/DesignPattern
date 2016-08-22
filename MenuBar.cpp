@@ -43,7 +43,7 @@ void MenuBar::addNewPattern(){
     description->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     url = new QLineEdit(&dialog);
     image = new QLineEdit(&dialog);
-    image->setText("click here");
+    image->setText("double click here");
     image->setReadOnly(true);
     connect(image, SIGNAL(selectionChanged()), this, SLOT(chooseFile()));
     form.addRow(new QLabel("Please fill this form."));
@@ -54,12 +54,16 @@ void MenuBar::addNewPattern(){
 
     QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
                                Qt::Horizontal, &dialog);
-    QObject::connect(&buttonBox, SIGNAL(accepted()), &dialog, SLOT(accept()));
-    QObject::connect(&buttonBox, SIGNAL(rejected()), &dialog, SLOT(reject()));
+    connect(&buttonBox, SIGNAL(accepted()), &dialog, SLOT(accept()));
+    connect(&buttonBox, SIGNAL(rejected()), &dialog, SLOT(reject()));
     form.addRow(&buttonBox);
 
-    if (dialog.exec() == QDialogButtonBox::Ok) {
-
+    if (dialog.exec() == QDialog::Accepted){
+        // user clicked on 'ok'
+        accept();
+    }else{
+        // user clicked on 'cancel'
+        reject();
     }
 }
 
@@ -74,9 +78,26 @@ void MenuBar::chooseFile(){
 }
 
 void MenuBar::accept(){
+        QString formName, formUrl, formDescription, formImage;
+        // get user's answers
+        formName = name->text();
+        formUrl = url->text();
+        formDescription = description->toPlainText();
+        formImage = image->text();
+        // check if formUrl is a webpage URL
+        bool begin = (formUrl.startsWith("http://") || formUrl.startsWith("https://")) && formImage.startsWith("/");
+        // check if form* are empties or incorrects
+        bool ok = (formName.isEmpty() || formUrl.isEmpty() || formDescription.isEmpty() || formImage.isEmpty());
+        if(ok || !begin){
+            // one of them (at least) is empty
+            QMessageBox::information(this, "Error", "Field(s) incorrect(s)");
+        }else{
+            QMessageBox::information(this, "Success", "Design Pattern added");
+            pGraphicModel->add(formName.toStdString(), formUrl.toStdString(), formDescription.toStdString(), formImage.toStdString());
+        }
 
 }
 
 void MenuBar::reject(){
-
+    // cancel = no action to do
 }

@@ -58,6 +58,7 @@ public:
     void handle(std::string answer);
     void setColor(QColor color); // set ViewQuiz color
     void close();
+    void add(std::string name, std::string url, std::string description, std::string image);
     static const int WIDTH = 600;
     static const int HEIGHT = 800;
 };

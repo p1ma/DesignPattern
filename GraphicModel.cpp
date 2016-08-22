@@ -186,3 +186,8 @@ void GraphicModel::fillView(Pattern *pattern, std::vector<std::string> answers){
 void GraphicModel::setColor(QColor color){
     this->pViewQuiz->setColor(color);
 }
+
+//Add a new Pattern to the pattern pool
+void GraphicModel::add(std::string name, std::string url, std::string description, std::string image){
+    this->pModel->add(name,url,description,image);
+}

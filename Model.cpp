@@ -47,6 +47,12 @@ void Model::play(){
     this->pGraphicModel->play(this->patterns);
 }
 
+// return pattern 'name' image
 QPixmap *Model::getImage(std::string const name){
     return this->pFileReader->getImage(name.c_str());
+}
+
+// add a new pattern
+void Model::add(std::string name, std::string url, std::string description, std::string image){
+
 }

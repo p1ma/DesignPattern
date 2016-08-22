@@ -14,6 +14,7 @@
 #include <QDialogButtonBox>
 #include <QFileDialog>
 #include <QDir>
+#include <iostream>
 
 class MenuBar : public QMenuBar
 {
