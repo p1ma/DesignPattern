@@ -16,6 +16,7 @@
 
 class Model;
 class MenuBar;
+class ViewInformation;
 
 class GraphicModel : QObject
 {
@@ -36,6 +37,7 @@ private :
     MenuBar *pMenuBar;
     std::vector<View*> views;
     ViewQuiz *pViewQuiz;
+    ViewInformation *pViewInformation;
     Model *pModel;
     std::vector<Pattern *> pPatterns;
     Pattern *rightAnswer;
@@ -62,6 +64,7 @@ public:
     void updateList(std::vector<Pattern *> patterns);
     unsigned int getSize(); // return pPatterns.size()
     std::vector<Pattern *> getList(); //return pPatterns
+    void setViewInformation(Pattern *pPattern); // fill viewInformation fields
     static const int WIDTH = 600;
     static const int HEIGHT = 800;
 };

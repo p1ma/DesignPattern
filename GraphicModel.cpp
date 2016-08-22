@@ -2,6 +2,7 @@
 
 #include "Model.hpp"
 #include "MenuBar.hpp"
+#include "ViewInformation.hpp"
 
 // constructor
 GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
@@ -19,9 +20,11 @@ GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
     //ViewAnswers *answers = new ViewAnswers(this);
     //ViewPattern *pattern = new ViewPattern(this);
     this->pViewQuiz = new ViewQuiz(this);
+    this->pViewInformation = new ViewInformation(this);
     views.push_back(this->pViewQuiz);
+    views.push_back(this->pViewInformation);
     srand(std::time(0)); // for rand() function
-    setView(pViewQuiz);
+    setView(pViewInformation);
     setColor(QColor(234,234,180)); // beige
 }
 
@@ -208,3 +211,17 @@ unsigned int GraphicModel::getSize(){
 std::vector<Pattern *> GraphicModel::getList(){
     return pModel->getList();
 }
+
+// fill viewInformation fields
+void GraphicModel::setViewInformation(Pattern *pPattern){
+    QPixmap *p = this->pModel->getImage(pPattern->getImageName());
+    std::string name = pPattern->getName();
+    std::string description = pPattern->getDescription();
+    std::string url = pPattern->getURL();
+    this->pViewInformation->set(name,p,description,url);
+    if(this->pViewInformation == NULL){
+        std::cout << "PROBLEM VIEW NULL" << std::endl;
+    }
+    setView(this->pViewInformation);
+}
+
