@@ -45,9 +45,7 @@ void GraphicModel::setView(View *v){
     if(setWindow != NULL){
         setWindow->setParent(0);
     }
-    if(setWindow != v){
-        this->window->setCentralWidget(v);
-    }
+    this->window->setCentralWidget(v);
     this->window->setMenuBar(this->pMenuBar);
     this->window->menuBar()->setVisible(true);
     this->show();

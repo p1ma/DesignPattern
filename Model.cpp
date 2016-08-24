@@ -57,9 +57,7 @@ QPixmap *Model::getImage(std::string const name){
 void Model::add(std::string name, std::string url, std::string description, std::string image){
     Pattern *p = this->pFileWriter->write(name,url,description,image);
     this->patterns.push_back(p);
-    std::cout << "THIS PATTERN HAS BEEN ADDED" << std::endl;
-    std::cout << p->getInformations() << std::endl;
-    play();
+    // program needs to be rebooted
 }
 
 // return patterns

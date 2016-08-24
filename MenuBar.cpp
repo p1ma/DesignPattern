@@ -111,7 +111,7 @@ void MenuBar::accept(){
             // one of them (at least) is empty
             QMessageBox::information(this, "Error", "Incorrect(s) field(s) !");
         }else{
-            QMessageBox::information(this, "Success", "Design Pattern added.");
+            QMessageBox::information(this, "Success", "Design Pattern added.\n Restart app please.");
             pGraphicModel->add(formName.toStdString(), formUrl.toStdString(), formDescription.toStdString(), formImage.toStdString());
         }
 }
