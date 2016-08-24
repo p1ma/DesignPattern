@@ -344,11 +344,11 @@ compiler_rcc_make_all: qrc_DesignPattern.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_DesignPattern.cpp
 qrc_DesignPattern.cpp: DesignPattern.qrc \
-		patterns/images/factory.png \
+		patterns/images/strategy.png \
 		patterns/images/state.png \
-		patterns/images/singleton.png \
 		patterns/images/mvc.png \
-		patterns/images/strategy.png
+		patterns/images/factory.png \
+		patterns/images/singleton.png
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name DesignPattern DesignPattern.qrc -o qrc_DesignPattern.cpp
 
 compiler_moc_header_make_all: moc_GraphicModel.cpp moc_ViewPattern.cpp moc_ViewAnswers.cpp moc_ViewQuiz.cpp moc_MenuBar.cpp moc_ViewInformation.cpp

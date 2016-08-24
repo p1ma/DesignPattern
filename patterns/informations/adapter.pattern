@@ -1,0 +1,5 @@
+@NAME = Adapter
+@UML = adapter.png
+@RESUME_FROM = https://en.wikipedia.org/wiki/Adapter_pattern
+@DESCRIPTION = Convert the interface of a class into another interface clients expect. Lets
+classes work together that couldn't otherwise because of incompatible interfaces.

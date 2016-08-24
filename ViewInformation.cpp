@@ -33,7 +33,7 @@ ViewInformation::ViewInformation(GraphicModel *pModel) : View(pModel)
     verticalLayout->addWidget(patternImage);
 
     descriptionTitle = new QLabel("Description");
-    descriptionTitle->setAlignment(Qt::AlignCenter);
+    descriptionTitle->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     descriptionTitle->setMinimumSize(QSize(GraphicModel::WIDTH, 25));
     descriptionTitle->setMaximumSize(QSize(GraphicModel::WIDTH, 35));
 
@@ -54,7 +54,7 @@ ViewInformation::ViewInformation(GraphicModel *pModel) : View(pModel)
     font1.setItalic(true);
     font1.setPointSize(12);
     patternDescription->setFont(font1);
-    patternDescription->setAlignment(Qt::AlignCenter);
+    patternDescription->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     patternDescription->setOpenExternalLinks(true);
 
     // Add it to the layout
@@ -94,6 +94,4 @@ void ViewInformation::set(std::string const name, QPixmap *image, std::string co
     patternDescription->setText(descript);
     patternDescription->adjustSize();
     patternDescription->setWordWrap(true);
-
-    std::cout << "DONE set ViewInformation " << std::endl;
 }
