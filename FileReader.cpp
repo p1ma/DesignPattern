@@ -106,7 +106,6 @@ QPixmap *FileReader::getImage(std::string link){
      * though it is the only one which work atm.
      *
      */
-    std::cout << "SEARCH " << link << std::endl;
     if(dir.exists()){
         QStringList filters;
         filters << "*.png" ;
@@ -124,11 +123,9 @@ QPixmap *FileReader::getImage(std::string link){
         }
     }
     QPixmap *pImage = new QPixmap();
-    std::cout << "IMAGE LOADED : " << toLoad.toStdString() << std::endl;
     pImage->load(toLoad);
     if(pImage->isNull()){
         pImage = new QPixmap(500,500); // blank image
-        std::cout << "IMAGE NULL" << std::endl;
     }
     return pImage;
 }

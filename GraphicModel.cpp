@@ -37,16 +37,19 @@ GraphicModel::~GraphicModel(){
 // default graphic interface, just colored window
 void GraphicModel::launch(){
     this->window->show();
-    this->show();
+    //this->show();
 }
 
 // change current view
 void GraphicModel::setView(View *v){
+    QWidget *setWindow = this->window->centralWidget();
+    if(setWindow != v){
     this->window->setCentralWidget(v);
+    }
     this->window->setMenuBar(this->pMenuBar);
     this->window->menuBar()->setVisible(true);
     this->window->show();
-    this->show();
+    //this->show();
 }
 
 // refresh all views
@@ -231,7 +234,6 @@ void GraphicModel::setViewInformation(Pattern *pPattern){
 
 // set ViewQuiz as mainWidget
 void GraphicModel::setViewQuiz(){
-    std::cout << "crashed" << std::endl;
     setView(pViewQuiz);
     play(pModel->getList());
 }

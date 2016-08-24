@@ -126,8 +126,6 @@ void MenuBar::seeInformations(){
         unsigned int index = pPatternList.indexOf(action,0);
         std::vector<Pattern *> pPatterns = pGraphicModel->getList();
         Pattern *p = pPatterns[index];
-        std::cout << "PATTERN LOADED : " << std::endl
-                     << p->getInformations() << std::endl;
         this->setParent(0);
         this->pGraphicModel->setViewInformation(p);
     }
