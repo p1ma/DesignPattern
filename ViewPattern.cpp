@@ -19,7 +19,6 @@ ViewPattern::ViewPattern(GraphicModel *pModel) : View(pModel)
 }
 
 ViewPattern::~ViewPattern(){
-    delete this->image;
     delete this->verticalLayout;
 }
 

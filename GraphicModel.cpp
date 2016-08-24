@@ -36,20 +36,21 @@ GraphicModel::~GraphicModel(){
 
 // default graphic interface, just colored window
 void GraphicModel::launch(){
-    this->window->show();
-    //this->show();
+    this->show();
 }
 
 // change current view
 void GraphicModel::setView(View *v){
     QWidget *setWindow = this->window->centralWidget();
+    if(setWindow != NULL){
+        setWindow->setParent(0);
+    }
     if(setWindow != v){
-    this->window->setCentralWidget(v);
+        this->window->setCentralWidget(v);
     }
     this->window->setMenuBar(this->pMenuBar);
     this->window->menuBar()->setVisible(true);
-    this->window->show();
-    //this->show();
+    this->show();
 }
 
 // refresh all views

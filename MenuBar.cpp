@@ -45,6 +45,7 @@ MenuBar::MenuBar(GraphicModel* const graphic) : QMenuBar(0), pGraphicModel(graph
 
 MenuBar::~MenuBar(){
     delete this->file;
+    delete this->informations;
     delete this->patternInfos;
 }
 
@@ -126,13 +127,11 @@ void MenuBar::seeInformations(){
         unsigned int index = pPatternList.indexOf(action,0);
         std::vector<Pattern *> pPatterns = pGraphicModel->getList();
         Pattern *p = pPatterns[index];
-        this->setParent(0);
         this->pGraphicModel->setViewInformation(p);
     }
 }
 
 // start the Quiz
 void MenuBar::startQuiz(){
-    this->setParent(0);
     this->pGraphicModel->setViewQuiz();
 }

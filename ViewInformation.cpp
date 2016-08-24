@@ -66,9 +66,6 @@ ViewInformation::ViewInformation(GraphicModel *pModel) : View(pModel)
 // destructor
 ViewInformation::~ViewInformation(){
     delete verticalLayout;
-    delete patterName;
-    delete patternImage;
-    delete patternDescription;
 }
 
 void ViewInformation::refresh() const{

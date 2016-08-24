@@ -23,7 +23,7 @@ class GraphicModel : QObject
     Q_OBJECT
         class MyWindow : public QMainWindow {
         public:
-            MyWindow () : QMainWindow() {
+            MyWindow () : QMainWindow(0) {
             }
 
         protected:
