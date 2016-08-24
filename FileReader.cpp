@@ -149,7 +149,6 @@ bool FileReader::compare(std::string s1, std::string s2){
     if(size > s2.size()){
         size = s2.size();
     }
-    std::cout << "compare " << s1 << " to " << s2 << std::endl;
     for(size_t t = 0 ; t < size ; t++){
         if(s1[t] != s2[t]){
             return false;

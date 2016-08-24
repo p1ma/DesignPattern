@@ -16,7 +16,7 @@ int main(int argc, char* argv[]){
   cout << "END TEST GET PATTERNS VIA MODEL CLASS" << endl;*/
 
   // PLAY
-  pModel->play();
+  pModel->launch();
 
   // TEST READFILE()
   /*

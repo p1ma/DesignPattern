@@ -14,17 +14,20 @@ MenuBar::MenuBar(GraphicModel* const graphic) : QMenuBar(0), pGraphicModel(graph
         // QACTION ADD NEW PATTERN
     this->addPattern = new QAction(tr("&New pattern"), this->patternInfos);
     connect(this->addPattern, SIGNAL(triggered()), this, SLOT(addNewPattern()));
+    // MENU "Quiz"
+    this->quiz = new QMenu("Quiz");
+    this->start = new QAction(tr("&Start Quiz"), this->quiz);
+    connect(this->start, SIGNAL(triggered()), this, SLOT(startQuiz()));
+    this->quiz->addAction(this->start);
+
         // QMENU INFORMATION
     this->informations = new QMenu(tr("&Informations"));
     //fillQActions();
-
     std::vector<Pattern *> pPatterns = pGraphicModel->getList();
-    std::cout << "PATTERN SIZE : " << pPatterns.size() << std::endl;
     for(unsigned int i = 0 ; i < pPatterns.size() ; i++){
         QAction *a = new QAction(tr(pPatterns[i]->getName().c_str()),this->informations);
         this->pPatternList.push_back(a);
         connect(a, SIGNAL(triggered()), this, SLOT(seeInformations()));
-
     }
 
     // fill QMenu informations
@@ -37,6 +40,7 @@ MenuBar::MenuBar(GraphicModel* const graphic) : QMenuBar(0), pGraphicModel(graph
     // ADD MENU TO MENUBAR
     this->addMenu(this->file);
     this->addMenu((this->patternInfos));
+    this->addMenu(this->quiz);
 }
 
 MenuBar::~MenuBar(){
@@ -50,7 +54,7 @@ void MenuBar::exitWindow(){
 
 void MenuBar::addNewPattern(){
     QDialog dialog(this);
-    dialog.setWindowTitle("Add new pattern");
+    dialog.setWindowTitle("AddGo Jun Hee  new pattern");
     QFormLayout form(&dialog);
     name = new QLineEdit(&dialog);
     description = new QTextEdit(&dialog);
@@ -124,6 +128,13 @@ void MenuBar::seeInformations(){
         Pattern *p = pPatterns[index];
         std::cout << "PATTERN LOADED : " << std::endl
                      << p->getInformations() << std::endl;
+        this->setParent(0);
         this->pGraphicModel->setViewInformation(p);
     }
+}
+
+// start the Quiz
+void MenuBar::startQuiz(){
+    this->setParent(0);
+    this->pGraphicModel->setViewQuiz();
 }

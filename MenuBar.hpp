@@ -26,6 +26,8 @@ private :
     QMenu *patternInfos;
     QAction *exit;
     QAction *addPattern;
+    QAction *start;
+    QMenu *quiz;
     QList<QAction *> pPatternList;
     QMenu *informations;
     QActionGroup *groupFile;
@@ -43,6 +45,7 @@ private slots:
     void accept();
     void reject();
     void seeInformations();
+    void startQuiz();
 };
 
 #endif // MENUBAR_HPP

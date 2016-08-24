@@ -8,6 +8,7 @@
 
 class ViewInformation : public View
 {
+    Q_OBJECT
 private :
     QVBoxLayout *verticalLayout;
     QLabel *patterName;

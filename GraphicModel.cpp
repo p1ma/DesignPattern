@@ -10,6 +10,7 @@ GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
     this->window = new MyWindow();
     this->window->setFixedSize(WIDTH,HEIGHT);
     this->window->setWindowTitle(QString::fromUtf8("Pattern Quiz") );
+    this->window->setStyleSheet("QMainWindow {background: 'beige';}");
 
     // MENUBAR
     this->pMenuBar = new MenuBar(this);
@@ -17,14 +18,11 @@ GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
     this->window->menuBar()->setVisible(true);
 
     // instanciate views
-    //ViewAnswers *answers = new ViewAnswers(this);
-    //ViewPattern *pattern = new ViewPattern(this);
     this->pViewQuiz = new ViewQuiz(this);
     this->pViewInformation = new ViewInformation(this);
     views.push_back(this->pViewQuiz);
     views.push_back(this->pViewInformation);
     srand(std::time(0)); // for rand() function
-    setView(pViewInformation);
     setColor(QColor(234,234,180)); // beige
 }
 
@@ -32,13 +30,23 @@ GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
 GraphicModel::~GraphicModel(){
     this->window->close();
     delete this->pViewQuiz;
+    delete this->pViewInformation;
     delete this->window;
+}
+
+// default graphic interface, just colored window
+void GraphicModel::launch(){
+    this->window->show();
+    this->show();
 }
 
 // change current view
 void GraphicModel::setView(View *v){
     this->window->setCentralWidget(v);
+    this->window->setMenuBar(this->pMenuBar);
+    this->window->menuBar()->setVisible(true);
     this->window->show();
+    this->show();
 }
 
 // refresh all views
@@ -180,14 +188,13 @@ void GraphicModel::handle(std::string answer){
 }
 
 void GraphicModel::fillView(Pattern *pattern, std::vector<std::string> answers){
-    std::cout << pattern->getInformations()<< std::endl;
-        QPixmap *pImage = this->pModel->getImage(pattern->getImageName());
-        this->pViewQuiz->setQuestion(pImage,answers);
-        this->show();
+    QPixmap *pImage = this->pModel->getImage(pattern->getImageName());
+    this->pViewQuiz->setQuestion(pImage,answers);
 }
 
 //set ViewQuiz's color
 void GraphicModel::setColor(QColor color){
+    this->pViewInformation->setColor(color);
     this->pViewQuiz->setColor(color);
 }
 
@@ -218,10 +225,13 @@ void GraphicModel::setViewInformation(Pattern *pPattern){
     std::string name = pPattern->getName();
     std::string description = pPattern->getDescription();
     std::string url = pPattern->getURL();
-    this->pViewInformation->set(name,p,description,url);
-    if(this->pViewInformation == NULL){
-        std::cout << "PROBLEM VIEW NULL" << std::endl;
-    }
     setView(this->pViewInformation);
+    this->pViewInformation->set(name,p,description,url);
 }
 
+// set ViewQuiz as mainWidget
+void GraphicModel::setViewQuiz(){
+    std::cout << "crashed" << std::endl;
+    setView(pViewQuiz);
+    play(pModel->getList());
+}

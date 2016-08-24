@@ -13,5 +13,4 @@ void View::setColor(QColor color){
     Pal.setColor(QPalette::Background, color);
     this->setAutoFillBackground(true);
     this->setPalette(Pal);
-    this->show();
 }

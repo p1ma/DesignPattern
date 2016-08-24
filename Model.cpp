@@ -7,7 +7,6 @@ Model::Model()
     this->pFileWriter = new FileWriter(pFileReader->getDirectory(), pFileReader->getImageDirectory());
     fillVector();
     this->pGraphicModel = new GraphicModel(this);
-    this->pGraphicModel->show();
 }
 
 // destructor
@@ -66,4 +65,9 @@ void Model::add(std::string name, std::string url, std::string description, std:
 // return patterns
 std::vector<Pattern *> Model::getList(){
     return this->patterns;
+}
+
+// launch graphic interface
+void Model::launch(){
+    this->pGraphicModel->launch();
 }

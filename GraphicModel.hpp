@@ -52,6 +52,7 @@ private :
 public:
     GraphicModel(Model *model); // constructor
     ~GraphicModel(); // destructor
+    void launch() ; // default graphic interface, just colored window
     void setView(View *v); // set current view 'v'
     void refreshViews(); // refresh all views
     void show(); // show MyWindow
@@ -65,6 +66,7 @@ public:
     unsigned int getSize(); // return pPatterns.size()
     std::vector<Pattern *> getList(); //return pPatterns
     void setViewInformation(Pattern *pPattern); // fill viewInformation fields
+    void setViewQuiz(); // set ViewQuiz as mainWidget
     static const int WIDTH = 600;
     static const int HEIGHT = 800;
 };

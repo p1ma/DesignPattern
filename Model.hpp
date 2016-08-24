@@ -21,6 +21,7 @@ public:
     ~Model();
     std::string const getPatterns(); // return all patterns
     void play(); // launch quiz
+    void launch(); // launch graphic interface
     QPixmap *getImage(std::string const name); // return pattern 'name' image
     void add(std::string name, std::string url, std::string description, std::string image); // add a new pattern
     std::vector<Pattern *> getList();
