@@ -20,8 +20,10 @@ GraphicModel::GraphicModel(Model *model) : QObject(), pModel(model)
     // instanciate views
     this->pViewQuiz = new ViewQuiz(this);
     this->pViewInformation = new ViewInformation(this);
+    this->pViewStart = new ViewStart(this);
     views.push_back(this->pViewQuiz);
     views.push_back(this->pViewInformation);
+    views.push_back(this->pViewStart);
     srand(std::time(0)); // for rand() function
     setColor(QColor(234,234,180)); // beige
 }
@@ -36,6 +38,7 @@ GraphicModel::~GraphicModel(){
 
 // default graphic interface, just colored window
 void GraphicModel::launch(){
+    setView(this->pViewStart);
     this->show();
 }
 

@@ -12,6 +12,7 @@
 #include <QMenu>
 #include "View.hpp"
 #include "ViewQuiz.hpp"
+#include "ViewStart.hpp"
 #include "Pattern.hpp"
 
 class Model;
@@ -38,6 +39,7 @@ private :
     std::vector<View*> views;
     ViewQuiz *pViewQuiz;
     ViewInformation *pViewInformation;
+    ViewStart *pViewStart;
     Model *pModel;
     std::vector<Pattern *> pPatterns;
     Pattern *rightAnswer;
